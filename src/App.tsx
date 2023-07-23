@@ -1,8 +1,9 @@
-import React, { useId } from "react";
+import React, { useId, useState } from "react";
 import mainImage from "./assets/mainImage.jpg";
 import featuresImage from "./assets/features.jpg";
 import Navbar from "./components/Navbar";
 import AccordionItem from "./components/AccordionItem";
+import contact from "./assets/contact.jpg";
 
 const App = () => {
   const faqData = [
@@ -95,7 +96,7 @@ const App = () => {
         </main>
       </header>
 
-      {/* creating the features section */}
+      {/* features section */}
       <section className="flex items-center justify-between mx-24">
         {/* adding the features image */}
         <img src={featuresImage} alt="feature section" className="w-[30rem]" />
@@ -128,7 +129,7 @@ const App = () => {
         </div>
       </section>
 
-      {/* creating the FAQ section */}
+      {/* FAQ section */}
       <section className="mx-24 my-10 flex flex-col items-center justify-center gap-5">
         <h1 className="text-2xl font-bold text-center">
           FAQ (Frequently Asked Questions)
@@ -147,6 +148,62 @@ const App = () => {
               );
             })
           )}
+        </div>
+      </section>
+
+      {/* contact section */}
+      <section className="mx-24 space-y-10">
+        <h1 className="text-2xl font-bold text-center">Contact Us</h1>
+        <div className="flex items-center justify-between">
+          <img src={contact} alt="contact us" className="w-[30rem]" />
+          <form className="shadow-lg p-5 rounded-md w-96 space-y-3">
+            <label
+              htmlFor="username"
+              className="flex flex-col gap-1 font-medium"
+            >
+              Name *
+              <input
+                type="text"
+                id="username"
+                placeholder="Vinay Pratap Singh"
+                required
+                className="px-3 py-1 focus:outline-teal-500 font-normal"
+              />
+            </label>
+
+            <label
+              htmlFor="useremail"
+              className="flex flex-col gap-1 font-medium"
+            >
+              Email *
+              <input
+                type="email"
+                id="useremail"
+                placeholder="test@gmail.com"
+                required
+                className="px-3 py-1 focus:outline-teal-500 font-normal"
+              />
+            </label>
+
+            <label
+              htmlFor="usermessage"
+              className="flex flex-col gap-1 font-medium"
+            >
+              Message *
+              <textarea
+                id="usermessage"
+                className="h-32 resize-none px-3 py-1 focus:outline-teal-500 font-normal"
+                placeholder="Thanks for this platform. Loved it."
+              />
+            </label>
+
+            <button
+              type="submit"
+              className="w-full bg-teal-500 text-white py-2 font-semibold text-lg"
+            >
+              Submit
+            </button>
+          </form>
         </div>
       </section>
     </>
