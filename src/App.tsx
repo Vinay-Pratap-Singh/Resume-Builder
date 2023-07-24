@@ -63,6 +63,8 @@ const App = () => {
     },
   ];
 
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       <header id="home">
@@ -167,7 +169,7 @@ const App = () => {
                 id="username"
                 placeholder="Vinay Pratap Singh"
                 required
-                className="px-3 py-1 focus:outline-teal-500 font-normal"
+                className="py-1 border-b-[1px] border-b-black  focus:outline-teal-500 focus:border-none focus:px-3 font-normal transition-all duration-200 ease-in-out"
               />
             </label>
 
@@ -181,7 +183,7 @@ const App = () => {
                 id="useremail"
                 placeholder="test@gmail.com"
                 required
-                className="px-3 py-1 focus:outline-teal-500 font-normal"
+                className="py-1 border-b-[1px] border-b-black  focus:outline-teal-500 focus:border-none focus:px-3 font-normal transition-all duration-200 ease-in-out"
               />
             </label>
 
@@ -192,20 +194,57 @@ const App = () => {
               Message *
               <textarea
                 id="usermessage"
-                className="h-32 resize-none px-3 py-1 focus:outline-teal-500 font-normal"
+                className="h-32 resize-none py-1 border-b-[1px] border-b-black  focus:outline-teal-500 focus:border-none focus:px-3 font-normal transition-all duration-200 ease-in-out"
                 placeholder="Thanks for this platform. Loved it."
               />
             </label>
 
             <button
               type="submit"
-              className="w-full bg-teal-500 text-white py-2 font-semibold text-lg"
+              className="w-full bg-teal-500 hover:bg-teal-400 transition-all duration-200 ease-in-out text-white py-2 font-semibold text-lg"
             >
               Submit
             </button>
           </form>
         </div>
       </section>
+
+      {/* adding the footer section */}
+      <footer className="mt-10 h-20 flex items-center justify-between px-24 bg-teal-50 font-medium">
+        <p>
+          © {currentYear}{" "}
+          <a
+            href="https://www.linkedin.com/in/vinay-pratap-singh-harvi-4b265a212/"
+            className="text-teal-500 underline"
+          >
+            Vinay Pratap Singh
+          </a>
+          . All rights reserved.
+        </p>
+
+        <p>
+          Made with ❤️ by{" "}
+          <a href="https://harvi.me/" className="text-teal-500 underline">
+            Harvi
+          </a>
+        </p>
+
+        {/* adding social media links */}
+        <div className="space-x-5 text-xl">
+          <a href="https://github.com/Vinay-Pratap-Singh">
+            <i className="fa-brands fa-github" />
+          </a>
+          <a href="https://www.linkedin.com/in/vinay-pratap-singh-harvi-4b265a212/">
+            <i className="fa-brands fa-linkedin" />
+          </a>
+          <a href="https://www.instagram.com/itsmevinayhere/">
+            <i className="fa-brands fa-instagram" />
+          </a>
+          <a href="https://twitter.com/harvi2001">
+            <i className="fa-brands fa-twitter" />
+          </a>
+        </div>
+      </footer>
     </>
   );
 };
