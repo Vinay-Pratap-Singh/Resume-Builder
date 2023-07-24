@@ -1,9 +1,9 @@
-import React, { useId, useState } from "react";
+import React, { useId } from "react";
 import mainImage from "./assets/mainImage.jpg";
 import featuresImage from "./assets/features.jpg";
-import Navbar from "./components/Navbar";
 import AccordionItem from "./components/AccordionItem";
 import contact from "./assets/contact.jpg";
+import template1 from "./assets/templates/template1.png";
 
 const App = () => {
   const faqData = [
@@ -67,12 +67,57 @@ const App = () => {
 
   return (
     <>
-      <header id="home">
+      <header>
         {/* adding the navigation menu */}
-        <Navbar />
+        <nav className="sticky_navbar w-full px-24 h-20 bg-teal-50 flex items-center justify-between">
+          {/* creating the logo */}
+          <h1 className="text-xl font-semibold">
+            Wizard <span className="font-bold text-teal-500">CV</span>
+          </h1>
+
+          {/* adding the nav items */}
+          <ul className="flex items-center gap-10 font-semibold">
+            <li>
+              <a href="#home" className="active:text-teal-500">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#features" className="active:text-teal-500">
+                Features
+              </a>
+            </li>
+            <li>
+              <a href="#template" className="active:text-teal-500">
+                Template
+              </a>
+            </li>
+            <li>
+              <a href="#faq" className="active:text-teal-500">
+                FAQ
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className="active:text-teal-500">
+                Contact Us
+              </a>
+            </li>
+          </ul>
+
+          {/* adding the button */}
+          <button
+            type="button"
+            className=" bg-teal-500 rounded-full px-5 py-2 text-white font-bold hover:bg-teal-600 transition-all duration-200 ease-in-out"
+          >
+            Get Started <span className="text-xl">&#8250;</span>
+          </button>
+        </nav>
 
         {/* creating the main section */}
-        <main className="flex items-center justify-between gap-10 my-10 mx-24">
+        <main
+          id="home"
+          className="flex items-center justify-between gap-10 mb-10 mt-5 mx-24"
+        >
           {/* section for the platform details */}
           <div className="w-26rem">
             <p className="text-gray-600 font-medium ">Elevate your potential</p>
@@ -99,7 +144,10 @@ const App = () => {
       </header>
 
       {/* features section */}
-      <section className="flex items-center justify-between mx-24">
+      <section
+        id="features"
+        className="flex items-center justify-between mx-24"
+      >
         {/* adding the features image */}
         <img src={featuresImage} alt="feature section" className="w-[30rem]" />
 
@@ -131,8 +179,33 @@ const App = () => {
         </div>
       </section>
 
+      {/* template section */}
+      <section id="template" className="my-10 mx-24 space-y-10">
+        <h1 className="text-2xl font-bold text-center">Sample Templates</h1>
+        <div className="flex items-center justify-center flex-wrap gap-10">
+          <img
+            className="h-80 w-64 border-[1px] border-gray-300 rounded-md hover:border-none hover:shadow-md hover:-translate-y-2 transition-all ease-in-out duration-300"
+            src={template1}
+            alt="template"
+          />
+          <img
+            className="h-80 w-64 border-[1px] border-gray-300 rounded-md hover:border-none hover:shadow-md hover:-translate-y-2 transition-all ease-in-out duration-300"
+            src={template1}
+            alt="template"
+          />
+          <img
+            className="h-80 w-64 border-[1px] border-gray-300 rounded-md hover:border-none hover:shadow-md hover:-translate-y-2 transition-all ease-in-out duration-300"
+            src={template1}
+            alt="template"
+          />
+        </div>
+      </section>
+
       {/* FAQ section */}
-      <section className="mx-24 my-10 flex flex-col items-center justify-center gap-5">
+      <section
+        id="faq"
+        className="mx-24 my-10 flex flex-col items-center justify-center gap-10"
+      >
         <h1 className="text-2xl font-bold text-center">
           FAQ (Frequently Asked Questions)
         </h1>
@@ -154,7 +227,7 @@ const App = () => {
       </section>
 
       {/* contact section */}
-      <section className="mx-24 space-y-10">
+      <section id="contact" className="mx-24 space-y-10">
         <h1 className="text-2xl font-bold text-center">Contact Us</h1>
         <div className="flex items-center justify-between">
           <img src={contact} alt="contact us" className="w-[30rem]" />
@@ -201,7 +274,7 @@ const App = () => {
 
             <button
               type="submit"
-              className="w-full bg-teal-500 hover:bg-teal-400 transition-all duration-200 ease-in-out text-white py-2 font-semibold text-lg"
+              className="w-full bg-teal-500 hover:bg-teal-600 transition-all duration-200 ease-in-out text-white py-2 font-semibold text-lg"
             >
               Submit
             </button>
