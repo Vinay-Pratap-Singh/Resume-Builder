@@ -69,7 +69,9 @@
         "namedComponents": "arrow-function",
         "unnamedComponents": "arrow-function"
       }
-    ]
+    ],
+    "react/jsx-props-no-spreading": "warn",
+    "no-nested-ternary": "warn"
   },
   "ignorePatterns": ["commitlint.config.js", "tailwind.config.js"]
 }
