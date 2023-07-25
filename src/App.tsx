@@ -5,6 +5,7 @@ import AccordionItem from "./components/AccordionItem";
 import contact from "./assets/contact.jpg";
 import template1 from "./assets/templates/template1.png";
 import Header from "./components/Header";
+import MoveToTop from "./components/MoveToTop";
 
 const App = () => {
   const faqData = [
@@ -94,6 +95,9 @@ const App = () => {
 
   return (
     <>
+      {/* adding the move to top button */}
+      <MoveToTop />
+
       <header>
         {/* adding the navigation menu */}
         <Header />
