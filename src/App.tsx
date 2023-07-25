@@ -1,4 +1,4 @@
-import React, { useId } from "react";
+import React, { useEffect, useId, useRef } from "react";
 import mainImage from "./assets/mainImage.jpg";
 import featuresImage from "./assets/features.jpg";
 import AccordionItem from "./components/AccordionItem";
@@ -63,8 +63,34 @@ const App = () => {
         "Yes, our resume builder is mobile-friendly and can be accessed and used on various devices, including smartphones and tablets.",
     },
   ];
-
   const currentYear = new Date().getFullYear();
+
+  // for handling the scroll animation behaviour
+  useEffect(() => {
+    const revealElements = document.querySelectorAll(".scroll_animation");
+
+    const revealHandler = () => {
+      const windowHeight = window.innerHeight;
+      const revealPoint = 150;
+
+      revealElements.forEach((element) => {
+        const revealTop = element.getBoundingClientRect().top;
+        if (revealTop < windowHeight - revealPoint) {
+          element.classList.add("active_animation");
+        } else {
+          element.classList.remove("active_animation");
+        }
+      });
+    };
+
+    // adding the event listener
+    window.addEventListener("scroll", revealHandler);
+
+    // removing the event listener
+    return () => {
+      window.removeEventListener("scroll", revealHandler);
+    };
+  }, []);
 
   return (
     <>
@@ -105,7 +131,7 @@ const App = () => {
       {/* features section */}
       <section
         id="features"
-        className="flex items-center justify-between mx-24"
+        className="scroll_animation flex items-center justify-between mx-24"
       >
         {/* adding the features image */}
         <img src={featuresImage} alt="feature section" className="w-[30rem]" />
@@ -139,7 +165,10 @@ const App = () => {
       </section>
 
       {/* template section */}
-      <section id="template" className="my-10 mx-24 space-y-10">
+      <section
+        id="template"
+        className="scroll_animation my-10 mx-24 space-y-10"
+      >
         <h1 className="text-2xl font-bold text-center">Sample Templates</h1>
         <div className="flex items-center justify-center flex-wrap gap-10">
           <img
@@ -163,7 +192,7 @@ const App = () => {
       {/* FAQ section */}
       <section
         id="faq"
-        className="mx-24 my-10 flex flex-col items-center justify-center gap-10"
+        className="scroll_animation mx-24 my-10 flex flex-col items-center justify-center gap-10"
       >
         <h1 className="text-2xl font-bold text-center">
           FAQ (Frequently Asked Questions)
@@ -186,7 +215,7 @@ const App = () => {
       </section>
 
       {/* contact section */}
-      <section id="contact" className="mx-24 space-y-10">
+      <section id="contact" className="scroll_animation mx-24 space-y-10">
         <h1 className="text-2xl font-bold text-center">Contact Us</h1>
         <div className="flex items-center justify-between">
           <img src={contact} alt="contact us" className="w-[30rem]" />
