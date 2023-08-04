@@ -21,7 +21,7 @@ const Stepper = () => {
 
   let steps = [
     {
-      id: "1",
+      id: "0",
       name: "Personal Details",
       href: "#",
       status: "complete",
@@ -34,10 +34,10 @@ const Stepper = () => {
       ),
     },
     {
-      id: "2",
+      id: "1",
       name: "Educational Details",
       href: "#",
-      status: "upcoming",
+      status: "current",
       icons: <AcademicCapIcon />,
       component: (
         <EducationalDetails
@@ -47,7 +47,7 @@ const Stepper = () => {
       ),
     },
     {
-      id: "3",
+      id: "2",
       name: "Projects",
       href: "#",
       status: "upcoming",
@@ -57,7 +57,7 @@ const Stepper = () => {
       ),
     },
     {
-      id: "4",
+      id: "3",
       name: "Certificates",
       href: "#",
       status: "upcoming",
@@ -70,7 +70,7 @@ const Stepper = () => {
       ),
     },
     {
-      id: "5",
+      id: "4",
       name: "Social Links",
       href: "#",
       status: "upcoming",
@@ -83,7 +83,7 @@ const Stepper = () => {
       ),
     },
     {
-      id: "6",
+      id: "5",
       name: "Template",
       href: "#",
       status: "upcoming",

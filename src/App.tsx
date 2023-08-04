@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useRef } from "react";
+import React, { useEffect, useId } from "react";
 import mainImage from "./assets/mainImage.jpg";
 import featuresImage from "./assets/features.jpg";
 import AccordionItem from "./components/AccordionItem";
@@ -275,7 +275,7 @@ const App = () => {
       </section>
 
       {/* adding the footer section */}
-      <footer className="mt-10 h-20 flex items-center justify-between px-24 bg-teal-50 font-medium">
+      <footer className="mt-10 h-20 flex items-center justify-between px-24 bg-[#385A64] font-medium text-white">
         <p>
           © {currentYear}{" "}
           <a

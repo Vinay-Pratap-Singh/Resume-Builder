@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <nav className="sticky_navbar w-full px-24 h-20 bg-teal-50 flex items-center justify-between">
+    <nav className="sticky_navbar w-full px-24 h-20 bg-[#385A64] flex items-center justify-between text-white">
       {/* creating the logo */}
       <h1 className="text-xl font-semibold">
         Wizard <span className="font-bold text-teal-500">CV</span>
