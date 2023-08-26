@@ -1,4 +1,5 @@
 import React, { useEffect, useId } from "react";
+import { Link } from "react-router-dom";
 import mainImage from "./assets/mainImage.jpg";
 import featuresImage from "./assets/features.jpg";
 import AccordionItem from "./components/AccordionItem";
@@ -6,6 +7,7 @@ import contact from "./assets/contact.jpg";
 import template1 from "./assets/templates/template1.png";
 import Header from "./components/Header";
 import MoveToTop from "./components/MoveToTop";
+import Footer from "./components/Footer";
 
 const App = () => {
   const faqData = [
@@ -64,7 +66,6 @@ const App = () => {
         "Yes, our resume builder is mobile-friendly and can be accessed and used on various devices, including smartphones and tablets.",
     },
   ];
-  const currentYear = new Date().getFullYear();
 
   // for handling the scroll animation behaviour
   useEffect(() => {
@@ -123,7 +124,9 @@ const App = () => {
               type="button"
               className="mt-10 bg-teal-500 rounded-full px-5 py-2 text-white font-bold hover:bg-teal-600 transition-all duration-200 ease-in-out"
             >
-              Get Started <span className="text-xl">&#8250;</span>
+              <Link to="/form">
+                Get Started <span className="text-xl">&#8250;</span>
+              </Link>
             </button>
           </div>
 
@@ -159,11 +162,14 @@ const App = () => {
             <li>One-Click Download</li>
             <li>Privacy and Security</li>
           </ul>
+
           <button
             type="button"
             className="bg-teal-500 rounded-full px-5 py-2 text-white font-bold hover:bg-teal-600 transition-all duration-200 ease-in-out"
           >
-            Build a resume <span className="text-xl">&#8250;</span>
+            <Link to="/form">
+              Build a resume <span className="text-xl">&#8250;</span>{" "}
+            </Link>
           </button>
         </div>
       </section>
@@ -275,41 +281,7 @@ const App = () => {
       </section>
 
       {/* adding the footer section */}
-      <footer className="mt-10 h-20 flex items-center justify-between px-24 bg-[#385A64] font-medium text-white">
-        <p>
-          © {currentYear}{" "}
-          <a
-            href="https://www.linkedin.com/in/vinay-pratap-singh-harvi-4b265a212/"
-            className="text-teal-500 underline"
-          >
-            Vinay Pratap Singh
-          </a>
-          . All rights reserved.
-        </p>
-
-        <p>
-          Made with ❤️ by{" "}
-          <a href="https://harvi.me/" className="text-teal-500 underline">
-            Harvi
-          </a>
-        </p>
-
-        {/* adding social media links */}
-        <div className="space-x-5 text-xl">
-          <a href="https://github.com/Vinay-Pratap-Singh">
-            <i className="fa-brands fa-github" />
-          </a>
-          <a href="https://www.linkedin.com/in/vinay-pratap-singh-harvi-4b265a212/">
-            <i className="fa-brands fa-linkedin" />
-          </a>
-          <a href="https://www.instagram.com/itsmevinayhere/">
-            <i className="fa-brands fa-instagram" />
-          </a>
-          <a href="https://twitter.com/harvi2001">
-            <i className="fa-brands fa-twitter" />
-          </a>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 };

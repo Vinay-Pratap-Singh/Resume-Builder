@@ -15,6 +15,7 @@ import Certificates from "../components/forms/Certificates";
 import SocialLinks from "../components/forms/SocialLinks";
 import Template from "../components/forms/Template";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Stepper = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -110,7 +111,7 @@ const Stepper = () => {
     <div className="">
       <Header />
       {/* creating the stepper */}
-      <div className="flex items-center mx-24">
+      <div className="flex items-center mx-24 mt-10">
         {steps.map((step, stepIndex) => {
           return step.status === "complete" ? (
             <>
@@ -158,6 +159,9 @@ const Stepper = () => {
 
       {/* adding the form section */}
       <section className="mt-20 ">{steps[currentStep]?.component}</section>
+
+      {/* adding the footer */}
+      <Footer />
     </div>
   );
 };

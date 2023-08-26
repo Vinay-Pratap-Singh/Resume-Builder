@@ -5,9 +5,11 @@ const Header = () => {
   return (
     <nav className="sticky_navbar w-full px-24 h-20 bg-[#385A64] flex items-center justify-between text-white">
       {/* creating the logo */}
-      <h1 className="text-xl font-semibold">
-        Wizard <span className="font-bold text-teal-500">CV</span>
-      </h1>
+      <Link to="/">
+        <h1 className="text-xl font-semibold">
+          Wizard <span className="font-bold text-teal-500">CV</span>
+        </h1>
+      </Link>
 
       {/* adding the nav items */}
       <ul className="flex items-center gap-10 font-semibold">
@@ -37,12 +39,14 @@ const Header = () => {
       </ul>
 
       {/* adding the button */}
-      <button
-        type="button"
-        className=" bg-teal-500 rounded-full px-5 py-2 text-white font-bold hover:bg-teal-600 transition-all duration-200 ease-in-out"
-      >
-        Get Started <span className="text-xl">&#8250;</span>
-      </button>
+      <Link to="/form">
+        <button
+          type="button"
+          className=" bg-teal-500 rounded-full px-5 py-2 text-white font-bold hover:bg-teal-600 transition-all duration-200 ease-in-out"
+        >
+          Get Started <span className="text-xl">&#8250;</span>
+        </button>
+      </Link>
     </nav>
   );
 };
