@@ -28,6 +28,7 @@ const Stepper = () => {
       icons: <IdentificationIcon />,
       component: (
         <PersonalDetails
+          key={Date.now()}
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
@@ -41,6 +42,7 @@ const Stepper = () => {
       icons: <AcademicCapIcon />,
       component: (
         <EducationalDetails
+          key={Date.now()}
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
@@ -53,7 +55,11 @@ const Stepper = () => {
       status: "upcoming",
       icons: <BookOpenIcon />,
       component: (
-        <Projects currentStep={currentStep} setCurrentStep={setCurrentStep} />
+        <Projects
+          key={Date.now()}
+          currentStep={currentStep}
+          setCurrentStep={setCurrentStep}
+        />
       ),
     },
     {
@@ -64,6 +70,7 @@ const Stepper = () => {
       icons: <ClipboardDocumentIcon />,
       component: (
         <Certificates
+          key={Date.now()}
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
@@ -77,6 +84,7 @@ const Stepper = () => {
       icons: <ChatBubbleLeftIcon />,
       component: (
         <SocialLinks
+          key={Date.now()}
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
@@ -89,10 +97,15 @@ const Stepper = () => {
       status: "upcoming",
       icons: <PrinterIcon />,
       component: (
-        <Template currentStep={currentStep} setCurrentStep={setCurrentStep} />
+        <Template
+          key={Date.now()}
+          currentStep={currentStep}
+          setCurrentStep={setCurrentStep}
+        />
       ),
     },
   ];
+
   const newSteps = [...steps];
   for (let i = 0; i < newSteps.length; i += 1) {
     if (Number(newSteps[i].id) === currentStep) {
@@ -114,7 +127,10 @@ const Stepper = () => {
         {steps.map((step, stepIndex) => {
           return step.status === "complete" ? (
             <>
-              <div className="flex items-center text-teal-600 relative">
+              <div
+                key={Date.now()}
+                className="flex items-center text-teal-600 relative"
+              >
                 <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 flex items-center justify-center border-2 border-teal-600">
                   <div className="h-6 w-6">{step?.icons}</div>
                 </div>
@@ -126,7 +142,10 @@ const Stepper = () => {
             </>
           ) : step.status === "current" ? (
             <>
-              <div className="flex items-center text-white relative">
+              <div
+                key={Date.now()}
+                className="flex items-center text-white relative"
+              >
                 <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 flex items-center justify-center border-2 bg-teal-600 border-teal-600">
                   <div className="h-6 w-6">{step?.icons}</div>
                 </div>
@@ -140,7 +159,10 @@ const Stepper = () => {
             </>
           ) : (
             <>
-              <div className="flex items-center text-gray-500 relative">
+              <div
+                key={Date.now()}
+                className="flex items-center text-gray-500 relative"
+              >
                 <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 flex items-center justify-center border-2 border-gray-300">
                   <div className="h-6 w-6">{step?.icons}</div>
                 </div>

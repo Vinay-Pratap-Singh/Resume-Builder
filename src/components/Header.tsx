@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
-  console.log(location.pathname);
+
   return (
     <nav className="sticky_navbar w-full px-24 h-20 bg-[#385A64] flex items-center justify-between text-white">
       {/* creating the logo */}
