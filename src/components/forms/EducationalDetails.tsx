@@ -91,11 +91,11 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for high school name */}
           <section className="w-full">
-            <label htmlFor="highSchool" className="font-bold">
+            <label htmlFor="highSchool" className="font-semibold">
               School Name
               <input
                 id="highSchool"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.highSchool?.name
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -121,11 +121,11 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for high school start date */}
           <section className="w-full">
-            <label htmlFor="highSchoolStartData" className="font-bold">
+            <label htmlFor="highSchoolStartData" className="font-semibold">
               Start Date
               <input
                 id="highSchoolStartData"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.highSchool?.startDate
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -148,11 +148,11 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for high school end date */}
           <section className="w-full">
-            <label htmlFor="highSchoolEndData" className="font-bold">
+            <label htmlFor="highSchoolEndData" className="font-semibold">
               End Date
               <input
                 id="highSchoolEndData"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.highSchool?.endDate
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -180,11 +180,11 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for 10 + 2 name */}
           <section className="w-full">
-            <label htmlFor="intermediate" className="font-bold">
+            <label htmlFor="intermediate" className="font-semibold">
               School Name
               <input
                 id="intermediate"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.intermediate?.name
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -210,11 +210,11 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for 10 + 2 start date */}
           <section className="w-full">
-            <label htmlFor="intermediateStartData" className="font-bold">
+            <label htmlFor="intermediateStartData" className="font-semibold">
               Start Date
               <input
                 id="intermediateStartData"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.intermediate?.startDate
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -237,11 +237,11 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for 10 + 2 end date */}
           <section className="w-full">
-            <label htmlFor="intermediateEndData" className="font-bold">
+            <label htmlFor="intermediateEndData" className="font-semibold">
               End Date
               <input
                 id="intermediateEndData"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.intermediate?.endDate
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -271,11 +271,11 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for graduation name */}
           <section className="w-full">
-            <label htmlFor="graduationName" className="font-bold">
+            <label htmlFor="graduationName" className="font-semibold">
               College Name
               <input
                 id="graduationName"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.graduation?.name
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -289,11 +289,11 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for graduation start date */}
           <section className="w-full">
-            <label htmlFor="graduationStartData" className="font-bold">
+            <label htmlFor="graduationStartData" className="font-semibold">
               Start Date
               <input
                 id="graduationStartData"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.graduation?.startDate
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -306,11 +306,11 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for graduation end date */}
           <section className="w-full">
-            <label htmlFor="graduationEndData" className="font-bold">
+            <label htmlFor="graduationEndData" className="font-semibold">
               End Date
               <input
                 id="graduationEndData"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.graduation?.endDate
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -330,11 +330,11 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for postgraduation name */}
           <section className="w-full">
-            <label htmlFor="postgraduationName" className="font-bold">
+            <label htmlFor="postgraduationName" className="font-semibold">
               College Name
               <input
                 id="postgraduationName"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.postGraduation?.name
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -348,11 +348,11 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for postgraduation start date */}
           <section className="w-full">
-            <label htmlFor="postgraduationStartData" className="font-bold">
+            <label htmlFor="postgraduationStartData" className="font-semibold">
               Start Date
               <input
                 id="postgraduationStartData"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.postGraduation?.startDate
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -365,11 +365,11 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for postgraduation end date */}
           <section className="w-full">
-            <label htmlFor="postgraduationEndData" className="font-bold">
+            <label htmlFor="postgraduationEndData" className="font-semibold">
               End Date
               <input
                 id="postgraduationEndData"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.postGraduation?.endDate
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "

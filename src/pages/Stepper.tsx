@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   AcademicCapIcon,
-  AdjustmentsHorizontalIcon,
   BookOpenIcon,
   ChatBubbleLeftIcon,
   ClipboardDocumentIcon,
@@ -108,7 +107,7 @@ const Stepper = () => {
   steps = [...newSteps];
 
   return (
-    <div className="">
+    <div className="min-h-screen flex flex-col justify-between">
       <Header />
       {/* creating the stepper */}
       <div className="flex items-center mx-24 mt-10">
@@ -158,7 +157,9 @@ const Stepper = () => {
       </div>
 
       {/* adding the form section */}
-      <section className="mt-20 ">{steps[currentStep]?.component}</section>
+      <section className="mt-20 self-stretch">
+        {steps[currentStep]?.component}
+      </section>
 
       {/* adding the footer */}
       <Footer />

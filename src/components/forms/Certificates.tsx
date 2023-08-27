@@ -99,12 +99,12 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                     <section className="w-full">
                       <label
                         htmlFor={`certificates.${index}.certificateName`}
-                        className="font-bold"
+                        className="font-semibold"
                       >
                         Certificate Name
                         <input
                           id={`certificates.${index}.certificateName`}
-                          className="px-2 py-1 border-2 w-full font-normal focus:outline-teal-600"
+                          className="px-2 py-1 mt-1 border-2 w-full font-normal focus:outline-teal-600"
                           type="text"
                           placeholder="Full Stack JavaScript Bootcamp"
                           {...register(
@@ -123,12 +123,12 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                     <section className="w-full">
                       <label
                         htmlFor={`certificates.${index}.certificateLink`}
-                        className="font-bold"
+                        className="font-semibold"
                       >
                         Certificate Link
                         <input
                           id={`certificates.${index}.certificateLink`}
-                          className="px-2 py-1 border-2 w-full font-normal focus:outline-teal-600"
+                          className="px-2 py-1 mt-1 border-2 w-full font-normal focus:outline-teal-600"
                           type="text"
                           placeholder="https://drive.google.com/drive/my-drive"
                           {...register(

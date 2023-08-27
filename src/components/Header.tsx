@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+  console.log(location.pathname);
   return (
     <nav className="sticky_navbar w-full px-24 h-20 bg-[#385A64] flex items-center justify-between text-white">
       {/* creating the logo */}
@@ -39,10 +41,13 @@ const Header = () => {
       </ul>
 
       {/* adding the button */}
-      <Link to="/form">
+      <Link
+        to="/form"
+        className={`${location.pathname === "/form" ? "hidden" : "block"}`}
+      >
         <button
           type="button"
-          className=" bg-teal-500 rounded-full px-5 py-2 text-white font-bold hover:bg-teal-600 transition-all duration-200 ease-in-out"
+          className="bg-teal-500 rounded-full px-5 py-2 text-white font-bold hover:bg-teal-600 transition-all duration-200 ease-in-out"
         >
           Get Started <span className="text-xl">&#8250;</span>
         </button>

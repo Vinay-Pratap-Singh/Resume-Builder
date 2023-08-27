@@ -57,11 +57,11 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
       {/* for github */}
       <section className="w-full">
-        <label htmlFor="github" className="font-bold">
-          Github Link
+        <label htmlFor="github" className="font-semibold">
+          Github
           <input
             id="github"
-            className={`px-2 py-1 border-2 w-full font-normal ${
+            className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
               errors.github
                 ? "focus:outline-red-500"
                 : "focus:outline-teal-600 "
@@ -73,6 +73,10 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                 value: true,
                 message: "* Please enter your github account link",
               },
+              pattern: {
+                value: /^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9_-]+\/?$/,
+                message: "Please enter a valid github profile link",
+              },
             })}
           />
         </label>
@@ -83,11 +87,11 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
       {/* for linkedin */}
       <section className="w-full">
-        <label htmlFor="github" className="font-bold">
-          Linkedin Link
+        <label htmlFor="github" className="font-semibold">
+          Linkedin
           <input
             id="linkedin"
-            className={`px-2 py-1 border-2 w-full font-normal ${
+            className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
               errors.linkedin
                 ? "focus:outline-red-500"
                 : "focus:outline-teal-600 "
@@ -99,6 +103,11 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                 value: true,
                 message: "* Please enter your linkedin profile link",
               },
+              pattern: {
+                value:
+                  /^(https?:\/\/)?(www\.)?linkedin\.com\/in\/[a-zA-Z0-9_-]+\/?$/,
+                message: "Please enter a valid linkedin profile link",
+              },
             })}
           />
         </label>
@@ -109,11 +118,11 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
       {/* for email */}
       <section className="w-full">
-        <label htmlFor="github" className="font-bold">
+        <label htmlFor="github" className="font-semibold">
           Email ID
           <input
             id="email"
-            className={`px-2 py-1 border-2 w-full font-normal ${
+            className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
               errors.email ? "focus:outline-red-500" : "focus:outline-teal-600 "
             }`}
             type="text"
@@ -135,11 +144,11 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
       {/* for portfolio */}
       <section className="w-full">
-        <label htmlFor="portfolio" className="font-bold">
-          Portfolio Link (Optional)
+        <label htmlFor="portfolio" className="font-semibold">
+          Portfolio (Optional)
           <input
             id="portfolio"
-            className="px-2 py-1 border-2 w-full font-normal focus:outline-teal-600"
+            className="px-2 py-1 mt-1 border-2 w-full font-normal focus:outline-teal-600"
             type="text"
             placeholder="https://harvi.me"
             {...register("portfolio")}

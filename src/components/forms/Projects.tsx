@@ -89,12 +89,12 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                 <section className="w-full">
                   <label
                     htmlFor={`projects.${index}.projectName`}
-                    className="font-bold"
+                    className="font-semibold"
                   >
                     Project Name
                     <input
                       id={`projects.${index}.projectName`}
-                      className="px-2 py-1 border-2 w-full font-normal focus:outline-teal-600"
+                      className="px-2 py-1 mt-1 border-2 w-full font-normal focus:outline-teal-600"
                       type="text"
                       placeholder="Snake Game"
                       {...register(`projects.${index}.projectName` as const)}
@@ -106,12 +106,12 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                 <section className="w-full">
                   <label
                     htmlFor={`projects.${index}.projectTechnology`}
-                    className="font-bold"
+                    className="font-semibold"
                   >
                     Technology Used
                     <input
                       id={`projects.${index}.projectTechnology`}
-                      className="px-2 py-1 border-2 w-full font-normal focus:outline-teal-600"
+                      className="px-2 py-1 mt-1 border-2 w-full font-normal focus:outline-teal-600"
                       type="text"
                       placeholder="HTML, CSS, JS"
                       {...register(
@@ -125,12 +125,12 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                 <section className="w-full">
                   <label
                     htmlFor={`projects.${index}.projectDescription`}
-                    className="font-bold"
+                    className="font-semibold"
                   >
                     Project Description
                     <input
                       id={`projects.${index}.projectDescription`}
-                      className="px-2 py-1 border-2 w-full font-normal focus:outline-teal-600"
+                      className="px-2 py-1 mt-1 border-2 w-full font-normal focus:outline-teal-600"
                       type="text"
                       placeholder="It is a popular game"
                       {...register(

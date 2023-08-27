@@ -70,8 +70,8 @@
         "unnamedComponents": "arrow-function"
       }
     ],
-    "react/jsx-props-no-spreading": "warn",
-    "no-nested-ternary": "warn"
+    "react/jsx-props-no-spreading": "off",
+    "no-nested-ternary": "off"
   },
   "ignorePatterns": ["commitlint.config.js", "tailwind.config.js"]
 }

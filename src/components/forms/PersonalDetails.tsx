@@ -18,9 +18,6 @@ interface Iprops {
 const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   // getting the data from local storage
   const storedData = localStorage.getItem("personalDetails");
-  if (storedData) {
-    console.log(JSON.parse(storedData));
-  }
 
   const {
     register,
@@ -33,7 +30,6 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
   // function to handle form submit through save and next button
   const onFormSubmit: SubmitHandler<IformData> = (data) => {
-    console.log(data);
     // saving data to the local storage
     localStorage.setItem("personalDetails", JSON.stringify(data));
     setCurrentStep(currentStep + 1);
@@ -62,11 +58,11 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for user full name */}
           <section className="w-full">
-            <label htmlFor="fullName" className="font-bold">
+            <label htmlFor="fullName" className="font-semibold">
               Full Name
               <input
                 id="fullName"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.fullName
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -92,11 +88,11 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for user phone number */}
           <section className="w-full">
-            <label htmlFor="phoneNumber" className="font-bold">
+            <label htmlFor="phoneNumber" className="font-semibold">
               Phone Number
               <input
                 id="phoneNumber"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.phoneNumber
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -130,11 +126,11 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for user state name */}
           <section className="w-full">
-            <label htmlFor="stateName" className="font-bold">
+            <label htmlFor="stateName" className="font-semibold">
               State Name
               <input
                 id="stateName"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.state
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -160,11 +156,11 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for user city */}
           <section className="w-full">
-            <label htmlFor="cityName" className="font-bold">
+            <label htmlFor="cityName" className="font-semibold">
               City Name
               <input
                 id="cityName"
-                className={`px-2 py-1 border-2 w-full font-normal ${
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                   errors.city
                     ? "focus:outline-red-500"
                     : "focus:outline-teal-600 "
@@ -198,11 +194,11 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
             {/* for user language preferences */}
             <section className="w-full">
-              <label htmlFor="language" className="font-bold">
+              <label htmlFor="language" className="font-semibold">
                 Languages
                 <input
                   id="language"
-                  className={`px-2 py-1 border-2 w-full font-normal ${
+                  className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                     errors.language
                       ? "focus:outline-red-500"
                       : "focus:outline-teal-600 "
@@ -232,11 +228,11 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             <h1 className="text-xl font-bold">Enter Your Interest Area</h1>
 
             <section className="w-full">
-              <label htmlFor="interest" className="font-bold">
+              <label htmlFor="interest" className="font-semibold">
                 Hobbies
                 <input
                   id="interest"
-                  className={`px-2 py-1 border-2 w-full font-normal ${
+                  className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
                     errors.interest
                       ? "focus:outline-red-500"
                       : "focus:outline-teal-600 "
