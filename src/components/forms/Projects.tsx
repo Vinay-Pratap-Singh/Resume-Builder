@@ -1,17 +1,25 @@
 import React, { FC } from "react";
-import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
+import {
+  Controller,
+  SubmitHandler,
+  useFieldArray,
+  useForm,
+} from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 interface Iprops {
   currentStep: number;
   setCurrentStep: (number: number) => void;
 }
 
+type Iproject = {
+  projectName: string;
+  projectTechnology: string[];
+  projectDescription: string;
+};
+
 interface IformData {
-  projects: {
-    projectName: string;
-    projectTechnology: string;
-    projectDescription: string;
-  }[];
+  projects: Iproject[];
 }
 
 const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
@@ -29,15 +37,15 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
     name: "projects",
   });
 
+  // for adding technologies in each project
+  const addTechnology = (projectIndex: number) => {
+    fields[projectIndex].projectTechnology.push("");
+  };
+
   // function to handle form submit through save and next button
   const onFormSubmit: SubmitHandler<IformData> = (data) => {
-    if (
-      data.projects.length === 0 ||
-      data.projects[0]?.projectName === "" ||
-      data.projects[0]?.projectDescription === "" ||
-      data.projects[0]?.projectTechnology === ""
-    ) {
-      alert("Please add atleast one project");
+    if (data.projects.length === 0) {
+      toast.error("Please add atleast one project");
       return;
     }
     console.log(data);
@@ -60,18 +68,18 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   return (
     <form
       onSubmit={handleSubmit(onFormSubmit)}
-      className="flex flex-col justify-center gap-10 w-fit m-auto"
+      className="flex flex-col justify-center gap-10 m-auto w-fit"
     >
       {/* container for project */}
       <div className="flex flex-col gap-10">
         <div className="self-center">
           <button
             type="button"
-            className="bg-teal-600 border-2 border-teal-600 text-white px-5 py-2 rounded-md font-bold"
+            className="px-5 py-2 font-bold text-white bg-teal-600 border-2 border-teal-600 rounded-md"
             onClick={() =>
               append({
                 projectName: "",
-                projectTechnology: "",
+                projectTechnology: [],
                 projectDescription: "",
               })
             }
@@ -80,11 +88,13 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
           </button>
         </div>
 
-        <div className="flex items-center justify-center flex-wrap gap-5">
-          {fields.map((item, index) => {
+        {/* mapping the projects data to display */}
+        <div className="flex flex-wrap items-center justify-center gap-5">
+          {fields.map((project: Iproject, index: number) => {
+            console.log(project);
             return (
-              <div key={item.id} className="w-80 space-y-3 flex flex-col">
-                <h1 className="font-bold text-xl">Project {index + 1}</h1>
+              <div key={Date.now()} className="flex flex-col space-y-3 w-80">
+                <h1 className="text-xl font-bold">Project {index + 1}</h1>
                 {/* project name */}
                 <section className="w-full">
                   <label
@@ -94,7 +104,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                     Project Name
                     <input
                       id={`projects.${index}.projectName`}
-                      className="px-2 py-1 mt-1 border-2 w-full font-normal focus:outline-teal-600"
+                      className="w-full px-2 py-1 mt-1 font-normal border-2 focus:outline-teal-600"
                       type="text"
                       placeholder="Snake Game"
                       {...register(`projects.${index}.projectName` as const)}
@@ -103,7 +113,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                 </section>
 
                 {/* technology used in project */}
-                <section className="w-full">
+                {/* <section className="w-full">
                   <label
                     htmlFor={`projects.${index}.projectTechnology`}
                     className="font-semibold"
@@ -111,7 +121,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                     Technology Used
                     <input
                       id={`projects.${index}.projectTechnology`}
-                      className="px-2 py-1 mt-1 border-2 w-full font-normal focus:outline-teal-600"
+                      className="w-full px-2 py-1 mt-1 font-normal border-2 focus:outline-teal-600"
                       type="text"
                       placeholder="HTML, CSS, JS"
                       {...register(
@@ -119,7 +129,33 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                       )}
                     />
                   </label>
-                </section>
+                </section> */}
+
+                <button type="button" onClick={() => addTechnology(index)}>
+                  Add Technology
+                </button>
+
+                {project?.projectTechnology &&
+                  project?.projectTechnology.map(
+                    (tech: string, techIndex: number) => (
+                      <Controller
+                        key={Date.now()}
+                        name="projects"
+                        // name={`${project.projectTechnology[techIndex]}`}
+                        control={control}
+                        render={({ field }: any) => (
+                          <input {...field} placeholder="Tech" />
+                        )}
+                      />
+                    ),
+                  )}
+                <input
+                  {...register(`projects.${index}.projectDescription`)}
+                  placeholder="Project Description"
+                />
+                <button type="button" onClick={() => remove(index)}>
+                  Remove Project
+                </button>
 
                 {/* project description */}
                 <section className="w-full">
@@ -130,7 +166,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                     Project Description
                     <input
                       id={`projects.${index}.projectDescription`}
-                      className="px-2 py-1 mt-1 border-2 w-full font-normal focus:outline-teal-600"
+                      className="w-full px-2 py-1 mt-1 font-normal border-2 focus:outline-teal-600"
                       type="text"
                       placeholder="It is a popular game"
                       {...register(
@@ -141,7 +177,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                 </section>
 
                 <button
-                  className="border-2 border-black px-3 py-1 rounded-md font-bold"
+                  className="px-3 py-1 font-bold border-2 border-black rounded-md"
                   type="button"
                   onClick={() => remove(index)}
                 >
@@ -153,17 +189,17 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         </div>
 
         {/* button to submit the form */}
-        <footer className="w-fit m-auto space-x-5">
+        <footer className="m-auto space-x-5 w-fit">
           <button
             type="button"
-            className="border-2 border-black px-5 py-2 rounded-md font-bold "
+            className="px-5 py-2 font-bold border-2 border-black rounded-md "
             onClick={handlePreviousBtn}
           >
             Back
           </button>
           <button
             type="submit"
-            className="bg-teal-600 border-2 border-teal-600 text-white px-5 py-2 rounded-md font-bold"
+            className="px-5 py-2 font-bold text-white bg-teal-600 border-2 border-teal-600 rounded-md"
           >
             Save and Next
           </button>

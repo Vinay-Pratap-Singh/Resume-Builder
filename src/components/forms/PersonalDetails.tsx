@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 interface IformData {
   fullName: string;
@@ -56,7 +57,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   // function to handle form submit through save and next button
   const onFormSubmit: SubmitHandler<IformData> = (data) => {
     if (!data?.languages.length || !data?.interests.length) {
-      alert("Minimum one language and interest required");
+      toast.error("Minimum one language and interest required");
       return;
     }
     // saving data to the local storage

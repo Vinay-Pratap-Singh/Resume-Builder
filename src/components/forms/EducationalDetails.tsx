@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 interface IformData {
   highSchool: {
@@ -57,11 +58,10 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         data.postGraduation?.endDate &&
         data.postGraduation?.startDate > data.postGraduation?.endDate)
     ) {
-      alert("Invalid date");
+      toast.error("Invalid date");
       return;
     }
 
-    console.log(data);
     // saving data to the local storage
     localStorage.setItem("educationalDetails", JSON.stringify(data));
     setCurrentStep(currentStep + 1);
