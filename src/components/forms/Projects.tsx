@@ -1,21 +1,11 @@
 import React, { FC } from "react";
-import {
-  Controller,
-  SubmitHandler,
-  useFieldArray,
-  useForm,
-} from "react-hook-form";
+import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { Iproject } from "../../helper/interface";
 
 interface Iprops {
   currentStep: number;
   setCurrentStep: (number: number) => void;
-}
-
-interface Iproject {
-  projectName: string;
-  projectTechnology: string[];
-  projectDescription: string;
 }
 
 interface IformData {
@@ -29,10 +19,9 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
     console.log(JSON.parse(storedData));
   }
 
-  const { register, handleSubmit, control, watch, setValue } =
-    useForm<IformData>({
-      defaultValues: storedData ? { ...JSON.parse(storedData) } : {},
-    });
+  const { register, handleSubmit, control, watch } = useForm<IformData>({
+    defaultValues: storedData ? { ...JSON.parse(storedData) } : {},
+  });
   const { fields, append, remove } = useFieldArray({
     control,
     name: "projects",
@@ -69,6 +58,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
       {/* container for project */}
 
       <div className="flex flex-col gap-10">
+        {/* button for adding new project */}
         <div className="self-center">
           <button
             type="button"
@@ -76,7 +66,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             onClick={() =>
               append({
                 projectName: "",
-                projectTechnology: [],
+                projectTechnology: "",
                 projectDescription: "",
               })
             }

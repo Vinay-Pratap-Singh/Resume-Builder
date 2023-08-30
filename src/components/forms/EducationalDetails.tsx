@@ -1,29 +1,7 @@
 import React, { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-
-interface IformData {
-  highSchool: {
-    name: string;
-    startDate: Date;
-    endDate: Date;
-  };
-  intermediate: {
-    name: string;
-    startDate: Date;
-    endDate: Date;
-  };
-  graduation?: {
-    name: string;
-    startDate: Date;
-    endDate: Date | string;
-  };
-  postGraduation?: {
-    name: string;
-    startDate: Date;
-    endDate: Date | string;
-  };
-}
+import { IeducationalDetails } from "../../helper/interface";
 
 interface Iprops {
   currentStep: number;
@@ -42,12 +20,12 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<IformData>({
+  } = useForm<IeducationalDetails>({
     defaultValues: storedData ? { ...JSON.parse(storedData) } : {},
   });
 
   // function to handle form submit through save and next button
-  const onFormSubmit: SubmitHandler<IformData> = (data) => {
+  const onFormSubmit: SubmitHandler<IeducationalDetails> = (data) => {
     if (
       data.highSchool.endDate <= data.highSchool.startDate ||
       data.intermediate.endDate <= data.intermediate.startDate ||
@@ -84,10 +62,10 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
       className="flex flex-col justify-center gap-10"
     >
       {/* for educational details */}
-      <header className="w-fit m-auto grid grid-cols-2 gap-10 justify-center">
+      <header className="grid justify-center grid-cols-2 gap-10 m-auto w-fit">
         {/* for high school details */}
         <div className="space-y-3 w-96">
-          <h1 className="font-bold text-xl">Enter Your High School Details</h1>
+          <h1 className="text-xl font-bold">Enter Your High School Details</h1>
 
           {/* for high school name */}
           <section className="w-full">
@@ -176,7 +154,7 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
         {/* for 10 + 2 */}
         <div className="space-y-3 w-96">
-          <h1 className="font-bold text-xl">Enter Your (10 + 2) Details</h1>
+          <h1 className="text-xl font-bold">Enter Your (10 + 2) Details</h1>
 
           {/* for 10 + 2 name */}
           <section className="w-full">
@@ -265,7 +243,7 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
         {/* for graduation */}
         <div className="space-y-3 w-96">
-          <h1 className="font-bold text-xl">
+          <h1 className="text-xl font-bold">
             Enter Your Graduation Details (Optional)
           </h1>
 
@@ -324,7 +302,7 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
         {/* for postgraduation */}
         <div className="space-y-3 w-96">
-          <h1 className="font-bold text-xl">
+          <h1 className="text-xl font-bold">
             Enter Post Graduation Details (Optional)
           </h1>
 
@@ -383,17 +361,17 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
       </header>
 
       {/* button to submit the form */}
-      <footer className="w-fit m-auto space-x-5">
+      <footer className="m-auto space-x-5 w-fit">
         <button
           type="button"
-          className="border-2 border-black px-5 py-2 rounded-md font-bold "
+          className="px-5 py-2 font-bold border-2 border-black rounded-md "
           onClick={handlePreviousBtn}
         >
           Back
         </button>
         <button
           type="submit"
-          className="bg-teal-600 border-2 border-teal-600 text-white px-5 py-2 rounded-md font-bold"
+          className="px-5 py-2 font-bold text-white bg-teal-600 border-2 border-teal-600 rounded-md"
         >
           Save and Next
         </button>

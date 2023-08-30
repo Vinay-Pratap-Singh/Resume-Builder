@@ -1,19 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-
-interface IformData {
-  fullName: string;
-  phoneNumber: string;
-  city: string;
-  state: string;
-  languages: {
-    language: string;
-  }[];
-  interests: {
-    hobby: string;
-  }[];
-}
+import { IpersonalDetails } from "../../helper/interface";
 
 interface Iprops {
   currentStep: number;
@@ -30,7 +18,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
     watch,
     control,
     formState: { errors },
-  } = useForm<IformData>({
+  } = useForm<IpersonalDetails>({
     defaultValues: storedData ? { ...JSON.parse(storedData) } : {},
   });
   const {
@@ -55,7 +43,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   const [interestError, setInterestError] = useState<string | null>(null);
 
   // function to handle form submit through save and next button
-  const onFormSubmit: SubmitHandler<IformData> = (data) => {
+  const onFormSubmit: SubmitHandler<IpersonalDetails> = (data) => {
     if (!data?.languages.length || !data?.interests.length) {
       toast.error("Minimum one language and interest required");
       return;
@@ -112,7 +100,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
       <div className="flex justify-center gap-10">
         {/* personal details section */}
         <div className="space-y-3 w-80">
-          <h1 className="font-bold text-xl">Enter Your Basic Details</h1>
+          <h1 className="text-xl font-bold">Enter Your Basic Details</h1>
 
           {/* for user full name */}
           <section className="w-full">
@@ -255,7 +243,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               {/* for adding new language */}
               <button
                 type="button"
-                className="w-fit p-1 rounded-full font-bold bg-teal-600 text-white"
+                className="p-1 font-bold text-white bg-teal-600 rounded-full w-fit"
                 onClick={() =>
                   appendLanguage({
                     language: "",
@@ -280,7 +268,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             </div>
 
             {/* for displaying all the languages */}
-            <div className="flex items-center flex-wrap gap-4">
+            <div className="flex flex-wrap items-center gap-4">
               {languageField.map((item, index) => {
                 return (
                   <section key={item.id} className="relative w-32">
@@ -311,7 +299,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                       />
                     </label>
                     <button
-                      className="w-fit font-bold absolute top-0 right-0"
+                      className="absolute top-0 right-0 font-bold w-fit"
                       type="button"
                       onClick={() => removeLanguage(index)}
                     >
@@ -347,7 +335,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               {/* for adding new hobby */}
               <button
                 type="button"
-                className="w-fit p-1 rounded-full font-bold bg-teal-600 text-white"
+                className="p-1 font-bold text-white bg-teal-600 rounded-full w-fit"
                 onClick={() =>
                   appendHobby({
                     hobby: "",
@@ -372,7 +360,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             </div>
 
             {/* for displaying all the hobbies */}
-            <div className="flex items-center flex-wrap gap-4">
+            <div className="flex flex-wrap items-center gap-4">
               {hobbyField.map((item, index) => {
                 return (
                   <section key={item.id} className="relative w-32">
@@ -403,7 +391,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                       />
                     </label>
                     <button
-                      className="w-fit font-bold absolute top-0 right-0"
+                      className="absolute top-0 right-0 font-bold w-fit"
                       type="button"
                       onClick={() => removeHobby(index)}
                     >
@@ -433,18 +421,18 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         </div>
       </div>
 
-      <div className="w-fit m-auto space-x-5">
+      <div className="m-auto space-x-5 w-fit">
         {/* button to submit the form */}
         <button
           type="button"
-          className="border-2 border-black px-5 py-2 rounded-md font-bold"
+          className="px-5 py-2 font-bold border-2 border-black rounded-md"
           onClick={handlePreviousBtn}
         >
           Back
         </button>
         <button
           type="submit"
-          className="bg-teal-600 border-2 border-teal-600 text-white px-5 py-2 rounded-md font-bold"
+          className="px-5 py-2 font-bold text-white bg-teal-600 border-2 border-teal-600 rounded-md"
         >
           Save and Next
         </button>

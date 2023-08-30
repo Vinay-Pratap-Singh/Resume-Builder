@@ -1,14 +1,10 @@
 import React, { FC, useState } from "react";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
+import { Icertificate } from "../../helper/interface";
 
 interface Iprops {
   currentStep: number;
   setCurrentStep: (number: number) => void;
-}
-
-interface Icertificate {
-  certificateName: string;
-  certificateLink: string;
 }
 
 interface IformData {
@@ -57,15 +53,15 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   return (
     <form
       onSubmit={handleSubmit(onFormSubmit)}
-      className="flex flex-col justify-center gap-10 w-full m-auto"
+      className="flex flex-col justify-center w-full gap-10 m-auto"
     >
-      <div className="space-y-3 flex flex-col">
+      <div className="flex flex-col space-y-3">
         {/* for checking user has certificate or not */}
-        <section className="w-full flex gap-2 font-semibold items-center justify-center text-lg">
+        <section className="flex items-center justify-center w-full gap-2 text-lg font-semibold">
           <label htmlFor="hasCertificate" className="font-bold">
             <input
               id="hasCertificate"
-              className="px-2 py-1 border-2 w-full font-normal focus:outline-teal-600  cursor-pointer"
+              className="w-full px-2 py-1 font-normal border-2 cursor-pointer focus:outline-teal-600"
               type="checkbox"
               {...register("hasCertificate")}
               onChange={(event) => setHasCertificate(event.target.checked)}
@@ -79,7 +75,7 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             <div>
               <button
                 type="button"
-                className="bg-teal-600 border-2 border-teal-600 text-white px-5 py-2 rounded-md font-bold"
+                className="px-5 py-2 font-bold text-white bg-teal-600 border-2 border-teal-600 rounded-md"
                 onClick={() =>
                   append({ certificateName: "", certificateLink: "" })
                 }
@@ -89,11 +85,11 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             </div>
 
             {/* if user has certificate */}
-            <div className="flex items-center justify-center flex-wrap gap-5">
+            <div className="flex flex-wrap items-center justify-center gap-5">
               {fields.map((item, index) => {
                 return (
-                  <div key={item.id} className="w-80 space-y-3 flex flex-col">
-                    <h1 className="font-bold text-xl">
+                  <div key={item.id} className="flex flex-col space-y-3 w-80">
+                    <h1 className="text-xl font-bold">
                       Certificate {index + 1}
                     </h1>
                     <section className="w-full">
@@ -104,7 +100,7 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                         Certificate Name
                         <input
                           id={`certificates.${index}.certificateName`}
-                          className="px-2 py-1 mt-1 border-2 w-full font-normal focus:outline-teal-600"
+                          className="w-full px-2 py-1 mt-1 font-normal border-2 focus:outline-teal-600"
                           type="text"
                           placeholder="Full Stack JavaScript Bootcamp"
                           {...register(
@@ -128,7 +124,7 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                         Certificate Link
                         <input
                           id={`certificates.${index}.certificateLink`}
-                          className="px-2 py-1 mt-1 border-2 w-full font-normal focus:outline-teal-600"
+                          className="w-full px-2 py-1 mt-1 font-normal border-2 focus:outline-teal-600"
                           type="text"
                           placeholder="https://drive.google.com/drive/my-drive"
                           {...register(
@@ -142,7 +138,7 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                     </section>
 
                     <button
-                      className="border-2 border-black px-3 py-1 rounded-md font-bold"
+                      className="px-3 py-1 font-bold border-2 border-black rounded-md"
                       type="button"
                       onClick={() => remove(index)}
                     >
@@ -154,17 +150,17 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             </div>
 
             {/* button to submit the form */}
-            <footer className="w-fit m-auto space-x-5">
+            <footer className="m-auto space-x-5 w-fit">
               <button
                 type="button"
-                className="border-2 border-black px-5 py-2 rounded-md font-bold "
+                className="px-5 py-2 font-bold border-2 border-black rounded-md "
                 onClick={handlePreviousBtn}
               >
                 Back
               </button>
               <button
                 type="submit"
-                className="bg-teal-600 border-2 border-teal-600 text-white px-5 py-2 rounded-md font-bold"
+                className="px-5 py-2 font-bold text-white bg-teal-600 border-2 border-teal-600 rounded-md"
               >
                 Save and Next
               </button>
@@ -173,7 +169,7 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         ) : (
           <button
             type="submit"
-            className="bg-teal-600 border-2 border-teal-600 text-white px-5 py-2 rounded-md font-bold w-fit self-center"
+            className="self-center px-5 py-2 font-bold text-white bg-teal-600 border-2 border-teal-600 rounded-md w-fit"
           >
             Skip This Section
           </button>

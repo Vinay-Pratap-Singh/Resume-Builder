@@ -1,16 +1,10 @@
 import React, { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { IsocialLinks } from "../../helper/interface";
 
 interface Iprops {
   currentStep: number;
   setCurrentStep: (number: number) => void;
-}
-
-interface IformData {
-  github: string;
-  linkedin: string;
-  email: string;
-  portfolio?: string;
 }
 
 const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
@@ -25,12 +19,12 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<IformData>({
+  } = useForm<IsocialLinks>({
     defaultValues: storedData ? { ...JSON.parse(storedData) } : {},
   });
 
   // function to handle form submit through save and next button
-  const onFormSubmit: SubmitHandler<IformData> = (data) => {
+  const onFormSubmit: SubmitHandler<IsocialLinks> = (data) => {
     console.log(data);
     // saving data to the local storage
     localStorage.setItem("socialLinks", JSON.stringify(data));
@@ -51,9 +45,9 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   return (
     <form
       onSubmit={handleSubmit(onFormSubmit)}
-      className="flex flex-col justify-center space-y-3 w-80 m-auto"
+      className="flex flex-col justify-center m-auto space-y-3 w-80"
     >
-      <h1 className="font-bold text-xl">Enter Your Social Media Links</h1>
+      <h1 className="text-xl font-bold">Enter Your Social Media Links</h1>
 
       {/* for github */}
       <section className="w-full">
@@ -148,7 +142,7 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
           Portfolio (Optional)
           <input
             id="portfolio"
-            className="px-2 py-1 mt-1 border-2 w-full font-normal focus:outline-teal-600"
+            className="w-full px-2 py-1 mt-1 font-normal border-2 focus:outline-teal-600"
             type="text"
             placeholder="https://harvi.me"
             {...register("portfolio")}
@@ -157,17 +151,17 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
       </section>
 
       {/* button to submit the form */}
-      <footer className="w-full flex items-center justify-center gap-2">
+      <footer className="flex items-center justify-center w-full gap-2">
         <button
           type="button"
-          className="border-2 border-black px-5 py-2 rounded-md font-bold"
+          className="px-5 py-2 font-bold border-2 border-black rounded-md"
           onClick={handlePreviousBtn}
         >
           Back
         </button>
         <button
           type="submit"
-          className="bg-teal-600 border-2 border-teal-600 text-white px-5 py-2 rounded-md font-bold"
+          className="px-5 py-2 font-bold text-white bg-teal-600 border-2 border-teal-600 rounded-md"
         >
           Save and Next
         </button>
