@@ -12,11 +12,11 @@ interface Iprops {
   setCurrentStep: (number: number) => void;
 }
 
-type Iproject = {
+interface Iproject {
   projectName: string;
   projectTechnology: string[];
   projectDescription: string;
-};
+}
 
 interface IformData {
   projects: Iproject[];
@@ -29,18 +29,14 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
     console.log(JSON.parse(storedData));
   }
 
-  const { register, handleSubmit, control, watch } = useForm<IformData>({
-    defaultValues: storedData ? { ...JSON.parse(storedData) } : {},
-  });
+  const { register, handleSubmit, control, watch, setValue } =
+    useForm<IformData>({
+      defaultValues: storedData ? { ...JSON.parse(storedData) } : {},
+    });
   const { fields, append, remove } = useFieldArray({
     control,
     name: "projects",
   });
-
-  // for adding technologies in each project
-  const addTechnology = (projectIndex: number) => {
-    fields[projectIndex].projectTechnology.push("");
-  };
 
   // function to handle form submit through save and next button
   const onFormSubmit: SubmitHandler<IformData> = (data) => {
@@ -71,6 +67,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
       className="flex flex-col justify-center gap-10 m-auto w-fit"
     >
       {/* container for project */}
+
       <div className="flex flex-col gap-10">
         <div className="self-center">
           <button
@@ -90,10 +87,9 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
         {/* mapping the projects data to display */}
         <div className="flex flex-wrap items-center justify-center gap-5">
-          {fields.map((project: Iproject, index: number) => {
-            console.log(project);
+          {fields.map((project, index: number) => {
             return (
-              <div key={Date.now()} className="flex flex-col space-y-3 w-80">
+              <div key={project?.id} className="flex flex-col space-y-3 w-80">
                 <h1 className="text-xl font-bold">Project {index + 1}</h1>
                 {/* project name */}
                 <section className="w-full">
@@ -113,7 +109,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                 </section>
 
                 {/* technology used in project */}
-                {/* <section className="w-full">
+                <section className="w-full">
                   <label
                     htmlFor={`projects.${index}.projectTechnology`}
                     className="font-semibold"
@@ -129,33 +125,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                       )}
                     />
                   </label>
-                </section> */}
-
-                <button type="button" onClick={() => addTechnology(index)}>
-                  Add Technology
-                </button>
-
-                {project?.projectTechnology &&
-                  project?.projectTechnology.map(
-                    (tech: string, techIndex: number) => (
-                      <Controller
-                        key={Date.now()}
-                        name="projects"
-                        // name={`${project.projectTechnology[techIndex]}`}
-                        control={control}
-                        render={({ field }: any) => (
-                          <input {...field} placeholder="Tech" />
-                        )}
-                      />
-                    ),
-                  )}
-                <input
-                  {...register(`projects.${index}.projectDescription`)}
-                  placeholder="Project Description"
-                />
-                <button type="button" onClick={() => remove(index)}>
-                  Remove Project
-                </button>
+                </section>
 
                 {/* project description */}
                 <section className="w-full">
