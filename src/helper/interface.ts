@@ -10,6 +10,8 @@ export interface IpersonalDetails {
   interests: {
     hobby: string;
   }[];
+  role: string;
+  bio: string;
 }
 
 // interface for educational details
@@ -55,4 +57,13 @@ export interface IsocialLinks {
   linkedin: string;
   email: string;
   portfolio?: string;
+}
+
+// interface for preview data
+export interface IpreviewData {
+  personalDetails: IpersonalDetails;
+  educationalDetails: IeducationalDetails;
+  projects: Iproject;
+  certificate: Icertificate;
+  socialLinks: IsocialLinks;
 }

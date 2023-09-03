@@ -419,6 +419,68 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             {interestError && <p className="text-red-500">{interestError}</p>}
           </div>
         </div>
+
+        {/* for user role details */}
+        <div className="space-y-3 w-80">
+          {/* for job role  */}
+          <section className="w-full">
+            <label htmlFor="cityName" className="font-semibold">
+              Job Role
+              <input
+                id="jobRole"
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
+                  errors.role
+                    ? "focus:outline-red-500"
+                    : "focus:outline-teal-600 "
+                }`}
+                type="text"
+                placeholder="Frontend developer"
+                {...register("role", {
+                  required: {
+                    value: true,
+                    message: "* Please enter your role",
+                  },
+                  minLength: {
+                    value: 3,
+                    message: "* Please enter a valid role type",
+                  },
+                })}
+              />
+            </label>
+            {errors.role && (
+              <p className="text-red-500">{errors.role.message}</p>
+            )}
+          </section>
+
+          {/* for role description  */}
+          <section className="w-full h-full">
+            <label htmlFor="cityName" className="font-semibold">
+              About yourself
+              <textarea
+                id="bio"
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 h-48 resize-none ${
+                  errors.bio
+                    ? "focus:outline-red-500"
+                    : "focus:outline-teal-600 "
+                }`}
+                placeholder="Use chatGPT to generate a bio of yourself"
+                {...register("bio", {
+                  required: {
+                    value: true,
+                    message: "* Please enter about yourself",
+                  },
+                  minLength: {
+                    value: 15,
+                    message: "* Please enter a valid bio",
+                  },
+                })}
+              />
+            </label>
+            {errors.role && (
+              <p className="text-red-500">{errors.role.message}</p>
+            )}
+          </section>
+        </div>
       </div>
 
       <div className="m-auto space-x-5 w-fit">
