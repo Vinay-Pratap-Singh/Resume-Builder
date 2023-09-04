@@ -37,15 +37,28 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
     control,
     name: "interests",
   });
+  const {
+    fields: skillsField,
+    append: appendSkill,
+    remove: removeSkill,
+  } = useFieldArray({
+    control,
+    name: "skills",
+  });
 
-  // for error message of language and interest
+  // for error message of language, interest and skills
   const [languageError, setLanguageError] = useState<string | null>(null);
   const [interestError, setInterestError] = useState<string | null>(null);
+  const [skillsError, setSkillsError] = useState<string | null>(null);
 
   // function to handle form submit through save and next button
   const onFormSubmit: SubmitHandler<IpersonalDetails> = (data) => {
-    if (!data?.languages.length || !data?.interests.length) {
-      toast.error("Minimum one language and interest required");
+    if (
+      !data?.languages.length ||
+      !data?.interests.length ||
+      !data?.skills.length
+    ) {
+      toast.error("Minimum one language, interest and skill required");
       return;
     }
     // saving data to the local storage
@@ -91,6 +104,20 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
       setInterestError(null);
     }
   }, [errors.interests]);
+
+  // for skills error
+  useEffect(() => {
+    if (errors.skills && (errors.skills as unknown[]).length > 0) {
+      for (let i = 0; i < (errors.skills as unknown[]).length; i = +1) {
+        if (errors.skills[i]?.name) {
+          setSkillsError(errors.skills[i]?.message || null);
+          break;
+        }
+      }
+    } else {
+      setSkillsError(null);
+    }
+  }, [errors.skills]);
 
   return (
     <form
@@ -417,6 +444,98 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
             {/* for displaying the errors */}
             {interestError && <p className="text-red-500">{interestError}</p>}
+          </div>
+
+          {/* for user skills */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h1 className="text-xl font-bold">Add your skills</h1>
+
+              {/* for adding new skills */}
+              <button
+                type="button"
+                className="p-1 font-bold text-white bg-teal-600 rounded-full w-fit"
+                onClick={() =>
+                  appendSkill({
+                    name: "",
+                  })
+                }
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* for displaying all the hobbies */}
+            <div className="flex flex-wrap items-center gap-4">
+              {skillsField.map((item, index) => {
+                return (
+                  <section key={item.id} className="relative w-32">
+                    <label
+                      htmlFor={`skills.${index}.name`}
+                      className="font-semibold"
+                    >
+                      Skill {index + 1}
+                      <input
+                        id={`skills.${index}.name`}
+                        className={`px-2 py-1 mt-1 border-2 w-full font-normal ${
+                          errors.skills && errors.skills[index]
+                            ? "focus:outline-red-500"
+                            : "focus:outline-teal-600 "
+                        }`}
+                        type="text"
+                        placeholder="HTML"
+                        {...register(`skills.${index}.name` as const, {
+                          required: {
+                            value: true,
+                            message: "* Please fill the skill",
+                          },
+                          minLength: {
+                            value: 3,
+                            message: "* Please write a valid skill",
+                          },
+                        })}
+                      />
+                    </label>
+                    <button
+                      className="absolute top-0 right-0 font-bold w-fit"
+                      type="button"
+                      onClick={() => removeSkill(index)}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </button>
+                  </section>
+                );
+              })}
+            </div>
+
+            {/* for displaying the errors */}
+            {skillsError && <p className="text-red-500">{skillsError}</p>}
           </div>
         </div>
 

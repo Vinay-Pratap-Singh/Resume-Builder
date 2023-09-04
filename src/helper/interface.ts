@@ -10,6 +10,9 @@ export interface IpersonalDetails {
   interests: {
     hobby: string;
   }[];
+  skills: {
+    name: string;
+  }[];
   role: string;
   bio: string;
 }
