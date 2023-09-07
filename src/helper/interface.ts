@@ -54,6 +54,15 @@ export interface Icertificate {
   certificateLink: string;
 }
 
+// interface for work experience
+export interface IworkExperience {
+  companyName: string;
+  designation: string;
+  startDuration: Date | null;
+  endDuration: Date | null;
+  workDone: string[];
+}
+
 // interface for social links
 export interface IsocialLinks {
   github: string;

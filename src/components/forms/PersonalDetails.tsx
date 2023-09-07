@@ -258,7 +258,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
           </section>
         </div>
 
-        {/* for language and hobbies */}
+        {/* for language, hobbies and skills */}
         <div className="space-y-3 w-[26rem]">
           {/* for language */}
           <div className="space-y-3">
@@ -478,7 +478,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               </button>
             </div>
 
-            {/* for displaying all the hobbies */}
+            {/* for displaying all the skills */}
             <div className="flex flex-wrap items-center gap-4">
               {skillsField.map((item, index) => {
                 return (

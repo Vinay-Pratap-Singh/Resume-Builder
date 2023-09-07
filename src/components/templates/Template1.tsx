@@ -38,8 +38,17 @@ const Template1 = ({ data }: Iprops) => {
         )}
       </section>
 
-      {/* skills section */}
-      <section>{}</section>
+      {/* main section */}
+      <main>
+        {/* for work experience */}
+
+        {/* skills section */}
+        <section>
+          {data?.personalDetails?.skills?.map((skill) => {
+            return <div key={Date.now()}>{skill?.name}</div>;
+          })}
+        </section>
+      </main>
     </div>
   );
 };

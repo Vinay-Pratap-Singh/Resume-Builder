@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   AcademicCapIcon,
   BookOpenIcon,
+  BriefcaseIcon,
   ChatBubbleLeftIcon,
   ClipboardDocumentIcon,
   IdentificationIcon,
@@ -15,6 +16,7 @@ import SocialLinks from "../components/forms/SocialLinks";
 import Template from "../components/forms/Template";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import WorkExperience from "../components/forms/WorkExperience";
 
 const Stepper = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -50,6 +52,20 @@ const Stepper = () => {
     },
     {
       id: "2",
+      name: "Work Experience",
+      href: "#",
+      status: "upcoming",
+      icons: <BriefcaseIcon />,
+      component: (
+        <WorkExperience
+          key={Date.now()}
+          currentStep={currentStep}
+          setCurrentStep={setCurrentStep}
+        />
+      ),
+    },
+    {
+      id: "3",
       name: "Projects",
       href: "#",
       status: "upcoming",
@@ -63,7 +79,7 @@ const Stepper = () => {
       ),
     },
     {
-      id: "3",
+      id: "4",
       name: "Certificates",
       href: "#",
       status: "upcoming",
@@ -77,7 +93,7 @@ const Stepper = () => {
       ),
     },
     {
-      id: "4",
+      id: "5",
       name: "Social Links",
       href: "#",
       status: "upcoming",
@@ -91,7 +107,7 @@ const Stepper = () => {
       ),
     },
     {
-      id: "5",
+      id: "6",
       name: "Template",
       href: "#",
       status: "upcoming",
@@ -120,7 +136,7 @@ const Stepper = () => {
   steps = [...newSteps];
 
   return (
-    <div className="min-h-screen flex flex-col justify-between">
+    <div className="flex flex-col justify-between min-h-screen">
       <Header />
       {/* creating the stepper */}
       <div className="flex items-center mx-24 mt-10">
@@ -129,49 +145,49 @@ const Stepper = () => {
             <>
               <div
                 key={Date.now()}
-                className="flex items-center text-teal-600 relative"
+                className="relative flex items-center text-teal-600"
               >
-                <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 flex items-center justify-center border-2 border-teal-600">
-                  <div className="h-6 w-6">{step?.icons}</div>
+                <div className="flex items-center justify-center w-12 h-12 transition duration-500 ease-in-out border-2 border-teal-600 rounded-full">
+                  <div className="w-6 h-6">{step?.icons}</div>
                 </div>
-                <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-teal-600">
+                <div className="absolute top-0 w-32 mt-16 -ml-10 text-xs font-medium text-center text-teal-600 uppercase">
                   {step?.name}
                 </div>
               </div>
-              <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-teal-600" />
+              <div className="flex-auto transition duration-500 ease-in-out border-t-2 border-teal-600" />
             </>
           ) : step.status === "current" ? (
             <>
               <div
                 key={Date.now()}
-                className="flex items-center text-white relative"
+                className="relative flex items-center text-white"
               >
-                <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 flex items-center justify-center border-2 bg-teal-600 border-teal-600">
-                  <div className="h-6 w-6">{step?.icons}</div>
+                <div className="flex items-center justify-center w-12 h-12 transition duration-500 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-full">
+                  <div className="w-6 h-6">{step?.icons}</div>
                 </div>
-                <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-teal-600">
+                <div className="absolute top-0 w-32 mt-16 -ml-10 text-xs font-medium text-center text-teal-600 uppercase">
                   {step?.name}
                 </div>
               </div>
               {stepIndex !== steps.length - 1 && (
-                <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300" />
+                <div className="flex-auto transition duration-500 ease-in-out border-t-2 border-gray-300" />
               )}
             </>
           ) : (
             <>
               <div
                 key={Date.now()}
-                className="flex items-center text-gray-500 relative"
+                className="relative flex items-center text-gray-500"
               >
-                <div className="rounded-full transition duration-500 ease-in-out h-12 w-12 flex items-center justify-center border-2 border-gray-300">
-                  <div className="h-6 w-6">{step?.icons}</div>
+                <div className="flex items-center justify-center w-12 h-12 transition duration-500 ease-in-out border-2 border-gray-300 rounded-full">
+                  <div className="w-6 h-6">{step?.icons}</div>
                 </div>
-                <div className="absolute top-0 -ml-10 text-center mt-16 w-32 text-xs font-medium uppercase text-gray-500">
+                <div className="absolute top-0 w-32 mt-16 -ml-10 text-xs font-medium text-center text-gray-500 uppercase">
                   {step.name}
                 </div>
               </div>
               {stepIndex !== steps.length - 1 && (
-                <div className="flex-auto border-t-2 transition duration-500 ease-in-out border-gray-300" />
+                <div className="flex-auto transition duration-500 ease-in-out border-t-2 border-gray-300" />
               )}
             </>
           );
@@ -179,7 +195,7 @@ const Stepper = () => {
       </div>
 
       {/* adding the form section */}
-      <section className="mt-20 self-stretch">
+      <section className="self-stretch mt-20">
         {steps[currentStep]?.component}
       </section>
 
