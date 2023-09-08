@@ -15,8 +15,11 @@ const Preview = () => {
   const educationalDetails = JSON.parse(
     localStorage.getItem("educationalDetails") || "{}",
   );
-  const projects = JSON.parse(localStorage.getItem("projects") || "{}");
-  const certificate = JSON.parse(localStorage.getItem("certificate") || "{}");
+  const workExperience = JSON.parse(
+    localStorage.getItem("workExperience") || "[]",
+  );
+  const projects = JSON.parse(localStorage.getItem("projects") || "[]");
+  const certificate = JSON.parse(localStorage.getItem("certificate") || "[]");
   const socialLinks = JSON.parse(localStorage.getItem("socialLinks") || "{}");
 
   const data: IpreviewData = {
@@ -25,6 +28,7 @@ const Preview = () => {
     projects,
     certificate,
     socialLinks,
+    workExperience,
   };
 
   // for checking data
