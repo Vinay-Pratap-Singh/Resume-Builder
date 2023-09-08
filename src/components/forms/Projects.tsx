@@ -1,5 +1,10 @@
 import React, { FC } from "react";
-import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
+import {
+  Controller,
+  SubmitHandler,
+  useFieldArray,
+  useForm,
+} from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { Iproject } from "../../helper/interface";
 
@@ -19,8 +24,16 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
     console.log(JSON.parse(storedData));
   }
 
-  const { register, handleSubmit, control, watch } = useForm<IformData>({
-    defaultValues: storedData ? { ...JSON.parse(storedData) } : {},
+  const {
+    handleSubmit,
+    control,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm<IformData>({
+    defaultValues: storedData
+      ? { ...JSON.parse(storedData) }
+      : { projects: [] },
   });
   const { fields, append, remove } = useFieldArray({
     control,
@@ -37,6 +50,24 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
     // saving data to the local storage
     localStorage.setItem("projects", JSON.stringify(data));
     setCurrentStep(currentStep + 1);
+  };
+
+  const addTech = (projectIndex: number) => {
+    const data = watch("projects");
+    const techArray = data[projectIndex].projectTechnology || [];
+    techArray.push("");
+    const updatedFields = [...data];
+    updatedFields[projectIndex].projectTechnology = [...techArray];
+    reset({ projects: updatedFields });
+  };
+
+  const removeTech = (projectIndex: number, techIndex: number) => {
+    const data = watch("projects");
+    const techArray = data[projectIndex].projectTechnology || [];
+    techArray.splice(techIndex, 1);
+    const updatedFields = [...data];
+    updatedFields[projectIndex].projectTechnology = techArray;
+    reset({ projects: updatedFields });
   };
 
   // function to handle the previous button
@@ -66,7 +97,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             onClick={() =>
               append({
                 projectName: "",
-                projectTechnology: "",
+                projectTechnology: [],
                 projectDescription: "",
               })
             }
@@ -76,76 +107,197 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         </div>
 
         {/* mapping the projects data to display */}
-        <div className="flex flex-wrap items-center justify-center gap-5">
-          {fields.map((project, index: number) => {
-            return (
-              <div key={project?.id} className="flex flex-col space-y-3 w-80">
-                <h1 className="text-xl font-bold">Project {index + 1}</h1>
-                {/* project name */}
-                <section className="w-full">
+        <div className="flex flex-wrap items-center justify-center gap-5 w-96">
+          {fields.map((project: any, projectIndex) => (
+            <div key={project.id} className="flex flex-col w-full space-y-3">
+              <h1 className="text-xl font-bold">Project {projectIndex + 1}</h1>
+              {/* for project name */}
+              <Controller
+                name={`projects.${projectIndex}.projectName`}
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: {
+                    value: true,
+                    message: "Please enter the project name",
+                  },
+                  minLength: {
+                    value: 3,
+                    message: "Please enter a valid project name",
+                  },
+                }}
+                render={({ field }: any) => (
                   <label
-                    htmlFor={`projects.${index}.projectName`}
+                    htmlFor={`projects.${projectIndex}.projectName`}
                     className="font-semibold"
                   >
                     Project Name
                     <input
-                      id={`projects.${index}.projectName`}
-                      className="w-full px-2 py-1 mt-1 font-normal border-2 focus:outline-teal-600"
+                      {...field}
+                      placeholder="Project Name"
                       type="text"
-                      placeholder="Snake Game"
-                      {...register(`projects.${index}.projectName` as const)}
+                      id={`projects.${projectIndex}.projectName`}
+                      className={`px-2 py-1 mt-1 border-2 w-full font-normal ${
+                        errors.projects &&
+                        errors.projects[projectIndex]?.projectName?.message
+                          ? "focus:outline-red-500"
+                          : "focus:outline-teal-600 "
+                      }`}
                     />
                   </label>
-                </section>
+                )}
+              />
 
-                {/* technology used in project */}
-                <section className="w-full">
+              {/* for project description */}
+              <Controller
+                name={`projects.${projectIndex}.projectDescription`}
+                control={control}
+                defaultValue=""
+                rules={{
+                  required: {
+                    value: true,
+                    message: "Please enter the project description",
+                  },
+                  minLength: {
+                    value: 20,
+                    message: "Please enter a valid project description",
+                  },
+                }}
+                render={({ field }: any) => (
                   <label
-                    htmlFor={`projects.${index}.projectTechnology`}
                     className="font-semibold"
-                  >
-                    Technology Used
-                    <input
-                      id={`projects.${index}.projectTechnology`}
-                      className="w-full px-2 py-1 mt-1 font-normal border-2 focus:outline-teal-600"
-                      type="text"
-                      placeholder="HTML, CSS, JS"
-                      {...register(
-                        `projects.${index}.projectTechnology` as const,
-                      )}
-                    />
-                  </label>
-                </section>
-
-                {/* project description */}
-                <section className="w-full">
-                  <label
-                    htmlFor={`projects.${index}.projectDescription`}
-                    className="font-semibold"
+                    htmlFor={`projects.${projectIndex}.projectDescription`}
                   >
                     Project Description
-                    <input
-                      id={`projects.${index}.projectDescription`}
-                      className="w-full px-2 py-1 mt-1 font-normal border-2 focus:outline-teal-600"
-                      type="text"
-                      placeholder="It is a popular game"
-                      {...register(
-                        `projects.${index}.projectDescription` as const,
-                      )}
+                    <textarea
+                      {...field}
+                      placeholder="Use chatGPT for better description"
+                      id={`projects.${projectIndex}.projectDescription`}
+                      className={`px-2 py-1 mt-1 border-2 w-full font-normal resize-none h-40 ${
+                        errors.projects &&
+                        errors.projects[projectIndex]?.projectDescription
+                          ?.message
+                          ? "focus:outline-red-500"
+                          : "focus:outline-teal-600"
+                      }`}
                     />
                   </label>
-                </section>
+                )}
+              />
 
-                <button
-                  className="px-3 py-1 font-bold border-2 border-black rounded-md"
-                  type="button"
-                  onClick={() => remove(index)}
-                >
-                  Remove Project
-                </button>
+              {/* for projects technology used */}
+              <div className="flex flex-col gap-0">
+                {/* for title and add button */}
+                <div className="flex items-center justify-between">
+                  <h4 className="font-semibold">Technologies Used</h4>
+                  {/* button to add tech */}
+                  <button
+                    type="button"
+                    className="font-bold text-white bg-teal-600 rounded-full w-fit hover:bg-teal-700"
+                    onClick={() => addTech(projectIndex)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-7 h-7"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* for displaying all the tech stacks */}
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  {Array.isArray(project.projectTechnology!) &&
+                    project.projectTechnology.map(
+                      (tech: any, techIndex: number) => (
+                        <section key={tech.id}>
+                          <Controller
+                            name={`projects.${projectIndex}.projectTechnology.${techIndex}`}
+                            control={control}
+                            defaultValue=""
+                            render={({ field }: any) => (
+                              <div className="flex items-center w-fit">
+                                <label
+                                  className="font-semibold"
+                                  htmlFor={`projects.${projectIndex}.projectTechnology.${techIndex}`}
+                                >
+                                  <div className="flex items-center">
+                                    <input
+                                      id={`projects.${projectIndex}.projectTechnology.${techIndex}`}
+                                      {...field}
+                                      placeholder="Tech"
+                                      className={`px-2 py-1 mt-1 border-2 font-normal w-36 peer ${
+                                        errors?.projects &&
+                                        errors?.projects[projectIndex]
+                                          ?.projectTechnology &&
+                                        errors.projects[projectIndex]
+                                          ?.projectTechnology?.[techIndex]
+                                          ?.message
+                                          ? "focus:outline-red-500"
+                                          : "focus:outline-teal-600"
+                                      }`}
+                                    />
+                                    {/* button to remove tech */}
+                                    <button
+                                      className={`h-full px-2 py-1 mt-1 font-bold text-red-500 border-2 border-l-0 border-gray-300 ${
+                                        errors?.projects &&
+                                        errors?.projects[projectIndex]
+                                          ?.projectTechnology &&
+                                        errors.projects[projectIndex]
+                                          ?.projectTechnology?.[techIndex]
+                                          ?.message
+                                          ? "peer-focus:border-red-500"
+                                          : "peer-focus:border-teal-600"
+                                      } hover:text-red-600 w-fit`}
+                                      type="button"
+                                      onClick={() =>
+                                        removeTech(projectIndex, techIndex)
+                                      }
+                                    >
+                                      <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth="1.5"
+                                        stroke="currentColor"
+                                        className="w-6 h-6"
+                                      >
+                                        <path
+                                          strokeLinecap="round"
+                                          strokeLinejoin="round"
+                                          d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                        />
+                                      </svg>
+                                    </button>
+                                  </div>
+                                </label>
+                              </div>
+                            )}
+                          />
+                        </section>
+                      ),
+                    )}
+                </div>
               </div>
-            );
-          })}
+
+              {/* button to remove project */}
+              <button
+                className="px-3 py-1 font-bold border-2 border-black rounded-md"
+                type="button"
+                onClick={() => remove(projectIndex)}
+              >
+                Remove Project
+              </button>
+            </div>
+          ))}
         </div>
 
         {/* button to submit the form */}

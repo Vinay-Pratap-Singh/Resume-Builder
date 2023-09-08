@@ -1,5 +1,10 @@
 {
   "name": "resume-builder",
+  "author": {
+    "name": "Vinay Pratap Singh",
+    "email": "technicalharvi@gmail.com",
+    "url": "https://harvi.me"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {

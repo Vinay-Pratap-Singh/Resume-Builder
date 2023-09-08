@@ -44,7 +44,7 @@ export interface IeducationalDetails {
 // interface for individual project
 export interface Iproject {
   projectName: string;
-  projectTechnology: string;
+  projectTechnology: string[];
   projectDescription: string;
 }
 
