@@ -126,7 +126,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
     >
       <div className="flex justify-center gap-10">
         {/* personal details section */}
-        <div className="space-y-3 w-80">
+        <div className="p-4 space-y-3 rounded-md shadow-md w-80">
           <h1 className="text-xl font-bold">Enter Your Basic Details</h1>
 
           {/* for user full name */}
@@ -259,7 +259,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         </div>
 
         {/* for language, hobbies and skills */}
-        <div className="space-y-3 w-[26rem]">
+        <div className="space-y-3 w-[26rem] p-4 shadow-md rounded-md">
           {/* for language */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
@@ -270,7 +270,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               {/* for adding new language */}
               <button
                 type="button"
-                className="p-1 font-bold text-white bg-teal-600 rounded-full w-fit"
+                className="font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 rounded-full w-fit hover:bg-teal-700"
                 onClick={() =>
                   appendLanguage({
                     language: "",
@@ -283,7 +283,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-7 h-7"
                 >
                   <path
                     strokeLinecap="round"
@@ -326,7 +326,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                       />
                     </label>
                     <button
-                      className="absolute top-0 right-0 font-bold w-fit"
+                      className="absolute top-0 right-0 font-bold text-white transition-all duration-200 ease-in-out bg-red-500 rounded-full w-fit hover:bg-red-600"
                       type="button"
                       onClick={() => removeLanguage(index)}
                     >
@@ -362,7 +362,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               {/* for adding new hobby */}
               <button
                 type="button"
-                className="p-1 font-bold text-white bg-teal-600 rounded-full w-fit"
+                className="font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 rounded-full w-fit hover:bg-teal-700"
                 onClick={() =>
                   appendHobby({
                     hobby: "",
@@ -375,7 +375,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-7 h-7"
                 >
                   <path
                     strokeLinecap="round"
@@ -418,7 +418,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                       />
                     </label>
                     <button
-                      className="absolute top-0 right-0 font-bold w-fit"
+                      className="absolute top-0 right-0 font-bold text-white transition-all duration-200 ease-in-out bg-red-500 rounded-full w-fit hover:bg-red-600"
                       type="button"
                       onClick={() => removeHobby(index)}
                     >
@@ -454,7 +454,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               {/* for adding new skills */}
               <button
                 type="button"
-                className="p-1 font-bold text-white bg-teal-600 rounded-full w-fit"
+                className="font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 rounded-full w-fit hover:bg-teal-700"
                 onClick={() =>
                   appendSkill({
                     name: "",
@@ -467,7 +467,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="w-7 h-7"
                 >
                   <path
                     strokeLinecap="round"
@@ -510,7 +510,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                       />
                     </label>
                     <button
-                      className="absolute top-0 right-0 font-bold w-fit"
+                      className="absolute top-0 right-0 font-bold text-white transition-all duration-200 ease-in-out bg-red-500 rounded-full w-fit hover:bg-red-600"
                       type="button"
                       onClick={() => removeSkill(index)}
                     >
@@ -540,7 +540,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         </div>
 
         {/* for user role details */}
-        <div className="space-y-3 w-80">
+        <div className="p-4 space-y-3 rounded-md shadow-md w-80">
           {/* for job role  */}
           <section className="w-full">
             <label htmlFor="cityName" className="font-semibold">
@@ -602,22 +602,22 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         </div>
       </div>
 
-      <div className="m-auto space-x-5 w-fit">
+      <footer className="m-auto space-x-5 w-fit">
         {/* button to submit the form */}
         <button
           type="button"
-          className="px-5 py-2 font-bold border-2 border-black rounded-md"
+          className="px-5 py-2 font-bold transition-all duration-200 ease-in-out border-2 border-black rounded-md hover:bg-gray-100"
           onClick={handlePreviousBtn}
         >
           Back
         </button>
         <button
           type="submit"
-          className="px-5 py-2 font-bold text-white bg-teal-600 border-2 border-teal-600 rounded-md"
+          className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md hover:bg-teal-700 hover:border-teal-700"
         >
           Save and Next
         </button>
-      </div>
+      </footer>
     </form>
   );
 };

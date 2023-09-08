@@ -154,14 +154,14 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
       <footer className="flex items-center justify-center w-full gap-2">
         <button
           type="button"
-          className="px-5 py-2 font-bold border-2 border-black rounded-md"
+          className="px-5 py-2 font-bold transition-all duration-200 ease-in-out border-2 border-black rounded-md hover:bg-gray-100"
           onClick={handlePreviousBtn}
         >
           Back
         </button>
         <button
           type="submit"
-          className="px-5 py-2 font-bold text-white bg-teal-600 border-2 border-teal-600 rounded-md"
+          className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md hover:bg-teal-700 hover:border-teal-700"
         >
           Save and Next
         </button>
