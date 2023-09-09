@@ -78,5 +78,8 @@ export interface IpreviewData {
   projects: Iproject;
   certificate: Icertificate;
   socialLinks: IsocialLinks;
-  workExperience: IworkExperience;
+  workExperience: {
+    hasExperience: boolean;
+    workExperience: IworkExperience;
+  };
 }

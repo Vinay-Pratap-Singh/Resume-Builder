@@ -259,7 +259,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         </div>
 
         {/* for language, hobbies and skills */}
-        <div className="space-y-3 w-[26rem] p-4 shadow-md rounded-md">
+        <div className="space-y-3 w-[28rem] p-4 shadow-md rounded-md">
           {/* for language */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
