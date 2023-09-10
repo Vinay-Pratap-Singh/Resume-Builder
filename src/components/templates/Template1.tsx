@@ -1,13 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { IpreviewData } from "../../helper/interface";
+import {
+  Icertificate,
+  IpreviewData,
+  Iproject,
+  IworkExperience,
+} from "../../helper/interface";
 
 interface Iprops {
   data: IpreviewData;
 }
 
 const Template1 = ({ data }: Iprops) => {
-  console.log(typeof data?.workExperience?.workExperience);
+  console.log(data?.personalDetails?.interests);
   return (
     <div>
       {/* creating the resume header */}
@@ -19,24 +24,53 @@ const Template1 = ({ data }: Iprops) => {
 
       {/* for social links */}
       <section>
-        {/* github */}
-        <Link to={data?.socialLinks?.github}>
-          <i className="fa-brands fa-github" />
-        </Link>
-        {/* for linkedin */}
-        <Link to={data?.socialLinks?.linkedin}>
-          <i className="fa-brands fa-linkedin" />
-        </Link>
         {/* for email */}
-        <Link to={data?.socialLinks?.email}>
-          <i className="fa-solid fa-envelope" />
-        </Link>
+        <div>
+          <Link to={data?.socialLinks?.email}>
+            <i className="fa-solid fa-envelope" />
+            <p>{data?.socialLinks?.email}</p>
+          </Link>
+        </div>
+
+        {/* for phone number */}
+        <div>
+          <i className="fa-solid fa-phone" />
+          <p>{data?.socialLinks?.phoneNumber}</p>
+        </div>
+
+        {/* github */}
+        <div>
+          <Link to={data?.socialLinks?.github}>
+            <i className="fa-brands fa-github" />
+            <p>{data?.socialLinks?.github}</p>
+          </Link>
+        </div>
+
+        {/* for linkedin */}
+        <div>
+          <Link to={data?.socialLinks?.linkedin}>
+            <i className="fa-brands fa-linkedin" />
+            <p>{data?.socialLinks?.linkedin}</p>
+          </Link>
+        </div>
+
         {/* for portfolio website */}
         {data?.socialLinks?.portfolio && (
-          <Link to={data?.socialLinks?.portfolio}>
-            <i className="fa-solid fa-globe" />
-          </Link>
+          <div>
+            <Link to={data?.socialLinks?.portfolio}>
+              <i className="fa-solid fa-globe" />
+              <p>{data?.socialLinks?.portfolio}</p>
+            </Link>
+          </div>
         )}
+
+        {/* for location */}
+        <div>
+          <i className="fa-solid fa-location-crosshairs" />
+          <p>
+            {data?.personalDetails?.city} ({data?.personalDetails?.state})
+          </p>
+        </div>
       </section>
 
       {/* main section */}
@@ -101,16 +135,114 @@ const Template1 = ({ data }: Iprops) => {
           </div>
 
           {/* for experience */}
+          {data?.workExperience?.hasExperience && (
+            <div>
+              <h1>Work Experience</h1>
+              <ul>
+                {(data?.workExperience?.workExperience ?? []).map(
+                  (work: IworkExperience) => {
+                    return (
+                      <li key={Date.now()}>
+                        <h1>{work?.companyName}</h1>
+                        <div>
+                          <h5>{work?.designation}</h5>
+                          <p>
+                            {String(work?.startDuration)} to{" "}
+                            {String(work?.endDuration)}
+                          </p>
+                        </div>
+                        <ul>
+                          {work?.workDone.map((task: string) => {
+                            return <li key={Date.now()}>{task}</li>;
+                          })}
+                        </ul>
+                      </li>
+                    );
+                  },
+                )}
+              </ul>
+            </div>
+          )}
+
+          {/* for projects */}
           <div>
-            <h1>Work Experience</h1>
+            <h1>Projects</h1>
+            <ul>
+              {(Array.isArray(data?.projects) ? data?.projects ?? [] : []).map(
+                (project: Iproject) => {
+                  return (
+                    <li key={Date.now()}>
+                      <h1>{project?.projectName}</h1>
+                      <p>{project?.projectDescription}</p>
+                      <ul>
+                        {project?.projectTechnology?.map((tech: string) => {
+                          return <li key={Date.now()}>{tech}</li>;
+                        })}
+                      </ul>
+                    </li>
+                  );
+                },
+              )}
+            </ul>
           </div>
         </section>
 
         {/* for right side */}
         <section>
-          {data?.personalDetails?.skills?.map((skill) => {
-            return <div key={Date.now()}>{skill?.name}</div>;
-          })}
+          {/* for skills */}
+          <div>
+            <h1>Skills</h1>
+            <ul>
+              {data?.personalDetails?.skills?.map((skill) => {
+                return <li key={Date.now()}>{skill?.name}</li>;
+              })}
+            </ul>
+          </div>
+
+          {/* for certificates */}
+          {data?.certificate?.hasCertificate && (
+            <div>
+              <h1>Certifications</h1>
+              <ul>
+                {data?.certificate?.certificates?.map(
+                  (certificate: Icertificate) => {
+                    return (
+                      <li key={Date.now()}>
+                        <h1>{certificate?.certificateName}</h1>
+                        <p>{certificate?.certificateLink}</p>
+                      </li>
+                    );
+                  },
+                )}
+              </ul>
+            </div>
+          )}
+
+          {/* for language preferences */}
+          <div>
+            <h1>Languages</h1>
+            <ul>
+              {(Array.isArray(data?.personalDetails?.languages)
+                ? data?.personalDetails?.languages ?? []
+                : []
+              ).map((lang: { language: string }) => {
+                return <p key={Date.now()}>{lang.language}</p>;
+              })}
+            </ul>
+          </div>
+
+          {/* for interest */}
+          <div>
+            <h1>Interest</h1>
+            <ul>
+              {(Array.isArray(data?.personalDetails?.interests)
+                ? data?.personalDetails?.interests ?? []
+                : []
+              ).map((interest: { hobby: string }) => {
+                return <p key={Date.now()}>{interest?.hobby}</p>;
+              })}
+            </ul>
+          </div>
         </section>
       </main>
     </div>

@@ -136,6 +136,36 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         {errors.email && <p className="text-red-500">{errors.email.message}</p>}
       </section>
 
+      {/* for phone number */}
+      <section className="w-full">
+        <label htmlFor="phoneNumber" className="font-semibold">
+          Phone number
+          <input
+            id="phoneNumber"
+            className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
+              errors.phoneNumber
+                ? "focus:outline-red-500"
+                : "focus:outline-teal-600 "
+            }`}
+            type="number"
+            placeholder="9807654321"
+            {...register("phoneNumber", {
+              required: {
+                value: true,
+                message: "* Please enter your phone number",
+              },
+              pattern: {
+                value: /^(?:(?:\+|0{0,2})91(\s*[-]\s*)?|[0]?)?[789]\d{9}$/,
+                message: "Please enter a valid phone number",
+              },
+            })}
+          />
+        </label>
+        {errors.phoneNumber && (
+          <p className="text-red-500">{errors.phoneNumber.message}</p>
+        )}
+      </section>
+
       {/* for portfolio */}
       <section className="w-full">
         <label htmlFor="portfolio" className="font-semibold">

@@ -25,7 +25,7 @@ const Preview = () => {
   const data: IpreviewData = {
     personalDetails,
     educationalDetails,
-    projects,
+    projects: projects?.projects,
     certificate,
     socialLinks,
     workExperience,

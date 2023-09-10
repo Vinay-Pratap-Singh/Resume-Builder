@@ -68,6 +68,7 @@ export interface IsocialLinks {
   github: string;
   linkedin: string;
   email: string;
+  phoneNumber: number;
   portfolio?: string;
 }
 
@@ -76,10 +77,13 @@ export interface IpreviewData {
   personalDetails: IpersonalDetails;
   educationalDetails: IeducationalDetails;
   projects: Iproject;
-  certificate: Icertificate;
+  certificate: {
+    hasCertificate: boolean;
+    certificates: Icertificate[];
+  };
   socialLinks: IsocialLinks;
   workExperience: {
     hasExperience: boolean;
-    workExperience: IworkExperience;
+    workExperience: IworkExperience[];
   };
 }
