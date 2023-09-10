@@ -12,81 +12,98 @@ interface Iprops {
 }
 
 const Template1 = ({ data }: Iprops) => {
-  console.log(data?.personalDetails?.interests);
   return (
-    <div>
+    <div className="m-5 border-2 border-gray-700 rounded-md">
       {/* creating the resume header */}
-      <header>
-        <h1>{data?.personalDetails?.fullName}</h1>
-        <h4>{data?.personalDetails?.role}</h4>
+      <header className="p-5">
+        <h1 className="text-3xl font-bold">
+          {data?.personalDetails?.fullName}
+        </h1>
+        <h4 className="text-lg font-semibold text-gray-600">
+          {data?.personalDetails?.role}
+        </h4>
         <p>{data?.personalDetails?.bio}</p>
       </header>
 
       {/* for social links */}
-      <section>
+      <section className="grid grid-cols-2 p-5 text-white bg-gray-700 gap-y-2 gap-x-5">
         {/* for email */}
         <div>
-          <Link to={data?.socialLinks?.email}>
+          <Link
+            to={data?.socialLinks?.email}
+            className="flex items-center gap-2"
+          >
             <i className="fa-solid fa-envelope" />
-            <p>{data?.socialLinks?.email}</p>
+            <p className="mb-1">{data?.socialLinks?.email}</p>
           </Link>
         </div>
 
         {/* for phone number */}
-        <div>
+        <div className="flex items-center gap-2">
           <i className="fa-solid fa-phone" />
-          <p>{data?.socialLinks?.phoneNumber}</p>
+          <p className="mb-1">{data?.socialLinks?.phoneNumber}</p>
         </div>
 
         {/* github */}
         <div>
-          <Link to={data?.socialLinks?.github}>
+          <Link
+            to={data?.socialLinks?.github}
+            className="flex items-center gap-2"
+          >
             <i className="fa-brands fa-github" />
-            <p>{data?.socialLinks?.github}</p>
+            <p className="mb-1">{data?.socialLinks?.github}</p>
           </Link>
         </div>
 
         {/* for linkedin */}
         <div>
-          <Link to={data?.socialLinks?.linkedin}>
+          <Link
+            to={data?.socialLinks?.linkedin}
+            className="flex items-center gap-2"
+          >
             <i className="fa-brands fa-linkedin" />
-            <p>{data?.socialLinks?.linkedin}</p>
+            <p className="mb-1">{data?.socialLinks?.linkedin}</p>
           </Link>
         </div>
 
         {/* for portfolio website */}
         {data?.socialLinks?.portfolio && (
           <div>
-            <Link to={data?.socialLinks?.portfolio}>
+            <Link
+              to={data?.socialLinks?.portfolio}
+              className="flex items-center gap-2"
+            >
               <i className="fa-solid fa-globe" />
-              <p>{data?.socialLinks?.portfolio}</p>
+              <p className="mb-1">{data?.socialLinks?.portfolio}</p>
             </Link>
           </div>
         )}
 
         {/* for location */}
-        <div>
+        <div className="flex items-center gap-2">
           <i className="fa-solid fa-location-crosshairs" />
-          <p>
+          <p className="mb-1">
             {data?.personalDetails?.city} ({data?.personalDetails?.state})
           </p>
         </div>
       </section>
 
       {/* main section */}
-      <main>
+      <main className="grid grid-cols-2 p-5 gap-x-5 gap-y-2">
         {/* for left side */}
-        <section>
+        <section className="space-y-5">
           {/* for educational details */}
-          <div>
-            <h1>Education</h1>
-            <ul>
+          <div className="space-y-2">
+            <h1 className="text-2xl font-bold">Education</h1>
+            <ul className="space-y-2">
               {/* for post graduation */}
               {data?.educationalDetails?.postGraduation?.name && (
                 <li>
-                  <h3>Post Graduation</h3>
-                  <p>{data?.educationalDetails?.postGraduation?.name}</p>
-                  <p>
+                  <h3 className="text-lg font-bold">Post Graduation</h3>
+                  <p className="text-xl font-semibold">
+                    {data?.educationalDetails?.postGraduation?.name}
+                  </p>
+                  <p className="text-xs font-semibold text-gray-700">
                     {String(
                       data?.educationalDetails?.postGraduation?.startDate,
                     )}{" "}
@@ -99,9 +116,11 @@ const Template1 = ({ data }: Iprops) => {
               {/* for graduation */}
               {data?.educationalDetails?.graduation?.name && (
                 <li>
-                  <h3>Graduation</h3>
-                  <p>{data?.educationalDetails?.graduation?.name}</p>
-                  <p>
+                  <h3 className="text-lg font-bold">Graduation</h3>
+                  <p className="text-xl font-semibold">
+                    {data?.educationalDetails?.graduation?.name}
+                  </p>
+                  <p className="text-xs font-semibold text-gray-700">
                     {String(data?.educationalDetails?.graduation?.startDate)} to{" "}
                     {String(data?.educationalDetails?.graduation?.endDate)}
                   </p>
@@ -111,9 +130,11 @@ const Template1 = ({ data }: Iprops) => {
               {/* for intermediate */}
               {data?.educationalDetails?.intermediate?.name && (
                 <li>
-                  <h3>Intermediate</h3>
-                  <p>{data?.educationalDetails?.intermediate?.name}</p>
-                  <p>
+                  <h3 className="text-lg font-bold">Intermediate</h3>
+                  <p className="text-xl font-semibold">
+                    {data?.educationalDetails?.intermediate?.name}
+                  </p>
+                  <p className="text-xs font-semibold text-gray-700">
                     {String(data?.educationalDetails?.intermediate?.startDate)}{" "}
                     to {String(data?.educationalDetails?.intermediate?.endDate)}
                   </p>
@@ -123,9 +144,11 @@ const Template1 = ({ data }: Iprops) => {
               {/* for high school */}
               {data?.educationalDetails?.highSchool?.name && (
                 <li>
-                  <h3>High School</h3>
-                  <p>{data?.educationalDetails?.highSchool?.name}</p>
-                  <p>
+                  <h3 className="text-lg font-bold">High School</h3>
+                  <p className="text-xl font-semibold">
+                    {data?.educationalDetails?.highSchool?.name}
+                  </p>
+                  <p className="text-xs font-semibold text-gray-700">
                     {String(data?.educationalDetails?.highSchool?.startDate)} to{" "}
                     {String(data?.educationalDetails?.highSchool?.endDate)}
                   </p>
@@ -136,22 +159,24 @@ const Template1 = ({ data }: Iprops) => {
 
           {/* for experience */}
           {data?.workExperience?.hasExperience && (
-            <div>
-              <h1>Work Experience</h1>
-              <ul>
+            <div className="space-y-2">
+              <h1 className="text-2xl font-bold">Work Experience</h1>
+              <ul className="space-y-2">
                 {(data?.workExperience?.workExperience ?? []).map(
                   (work: IworkExperience) => {
                     return (
                       <li key={Date.now()}>
-                        <h1>{work?.companyName}</h1>
-                        <div>
-                          <h5>{work?.designation}</h5>
-                          <p>
-                            {String(work?.startDuration)} to{" "}
-                            {String(work?.endDuration)}
-                          </p>
-                        </div>
-                        <ul>
+                        <h1 className="text-xl font-bold">
+                          {work?.designation}
+                        </h1>
+                        <h3 className="text-2xl font-semibold">
+                          {work?.companyName}
+                        </h3>
+                        <p className="text-xs font-semibold text-gray-700">
+                          {String(work?.startDuration)} to{" "}
+                          {String(work?.endDuration)}
+                        </p>
+                        <ul className="pl-5 list-disc text-md">
                           {work?.workDone.map((task: string) => {
                             return <li key={Date.now()}>{task}</li>;
                           })}
@@ -165,18 +190,27 @@ const Template1 = ({ data }: Iprops) => {
           )}
 
           {/* for projects */}
-          <div>
-            <h1>Projects</h1>
-            <ul>
+          <div className="space-y-2">
+            <h1 className="text-2xl font-bold">Projects</h1>
+            <ul className="space-y-2">
               {(Array.isArray(data?.projects) ? data?.projects ?? [] : []).map(
                 (project: Iproject) => {
                   return (
                     <li key={Date.now()}>
-                      <h1>{project?.projectName}</h1>
+                      <h1 className="text-xl font-semibold">
+                        {project?.projectName}
+                      </h1>
                       <p>{project?.projectDescription}</p>
-                      <ul>
+                      <ul className="flex flex-wrap items-center gap-2 mt-1">
                         {project?.projectTechnology?.map((tech: string) => {
-                          return <li key={Date.now()}>{tech}</li>;
+                          return (
+                            <li
+                              key={Date.now()}
+                              className="flex items-center justify-center px-3 py-1 text-sm text-white bg-gray-500 rounded-md"
+                            >
+                              {tech}
+                            </li>
+                          );
                         })}
                       </ul>
                     </li>
@@ -188,27 +222,36 @@ const Template1 = ({ data }: Iprops) => {
         </section>
 
         {/* for right side */}
-        <section>
+        <section className="space-y-5">
           {/* for skills */}
-          <div>
-            <h1>Skills</h1>
-            <ul>
+          <div className="space-y-2">
+            <h1 className="text-2xl font-bold">Skills</h1>
+            <ul className="flex flex-wrap items-center gap-2">
               {data?.personalDetails?.skills?.map((skill) => {
-                return <li key={Date.now()}>{skill?.name}</li>;
+                return (
+                  <li
+                    key={Date.now()}
+                    className="px-3 py-1 text-sm text-white bg-gray-500 rounded-md "
+                  >
+                    {skill?.name}
+                  </li>
+                );
               })}
             </ul>
           </div>
 
           {/* for certificates */}
           {data?.certificate?.hasCertificate && (
-            <div>
-              <h1>Certifications</h1>
+            <div className="space-y-2">
+              <h1 className="text-2xl font-bold">Certifications</h1>
               <ul>
                 {data?.certificate?.certificates?.map(
                   (certificate: Icertificate) => {
                     return (
                       <li key={Date.now()}>
-                        <h1>{certificate?.certificateName}</h1>
+                        <h1 className="text-lg font-semibold">
+                          {certificate?.certificateName}
+                        </h1>
                         <p>{certificate?.certificateLink}</p>
                       </li>
                     );
@@ -219,27 +262,41 @@ const Template1 = ({ data }: Iprops) => {
           )}
 
           {/* for language preferences */}
-          <div>
-            <h1>Languages</h1>
-            <ul>
+          <div className="space-y-2">
+            <h1 className="text-2xl font-bold">Languages</h1>
+            <ul className="flex flex-wrap items-center gap-2">
               {(Array.isArray(data?.personalDetails?.languages)
                 ? data?.personalDetails?.languages ?? []
                 : []
               ).map((lang: { language: string }) => {
-                return <p key={Date.now()}>{lang.language}</p>;
+                return (
+                  <li
+                    key={Date.now()}
+                    className="px-3 py-1 text-sm text-white bg-gray-500 rounded-md"
+                  >
+                    {lang.language}
+                  </li>
+                );
               })}
             </ul>
           </div>
 
           {/* for interest */}
-          <div>
-            <h1>Interest</h1>
-            <ul>
+          <div className="space-y-2">
+            <h1 className="text-2xl font-bold">Interest</h1>
+            <ul className="flex flex-wrap items-center gap-2">
               {(Array.isArray(data?.personalDetails?.interests)
                 ? data?.personalDetails?.interests ?? []
                 : []
               ).map((interest: { hobby: string }) => {
-                return <p key={Date.now()}>{interest?.hobby}</p>;
+                return (
+                  <li
+                    key={Date.now()}
+                    className="px-3 py-1 text-sm text-white bg-gray-500 rounded-md"
+                  >
+                    {interest?.hobby}
+                  </li>
+                );
               })}
             </ul>
           </div>

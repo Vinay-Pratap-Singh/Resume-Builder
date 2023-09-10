@@ -43,11 +43,15 @@ const Header = () => {
       {/* adding the button */}
       <Link
         to="/form"
-        className={`${location.pathname === "/form" ? "hidden" : "block"}`}
+        className={`${
+          location.pathname === "/form" || location.pathname === "/preview"
+            ? "hidden"
+            : "block"
+        }`}
       >
         <button
           type="button"
-          className="bg-teal-500 rounded-full px-5 py-2 text-white font-bold hover:bg-teal-600 transition-all duration-200 ease-in-out"
+          className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-500 rounded-full hover:bg-teal-600"
         >
           Get Started <span className="text-xl">&#8250;</span>
         </button>
