@@ -20,10 +20,6 @@ interface IformData {
 const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   // getting the data from local storage
   const storedData = localStorage.getItem("projects");
-  if (storedData) {
-    console.log(JSON.parse(storedData));
-  }
-
   const {
     handleSubmit,
     control,
@@ -107,9 +103,12 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         </div>
 
         {/* mapping the projects data to display */}
-        <div className="flex flex-wrap items-center justify-center gap-5 p-4 rounded-md shadow-md w-96">
+        <div className="flex flex-wrap items-center justify-center gap-5">
           {fields.map((project: any, projectIndex) => (
-            <div key={project.id} className="flex flex-col w-full space-y-3">
+            <div
+              key={project.id}
+              className="flex flex-col self-start p-4 space-y-3 rounded-md shadow-md w-96"
+            >
               <h1 className="text-xl font-bold">Project {projectIndex + 1}</h1>
               {/* for project name */}
               <Controller
@@ -234,7 +233,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                                       id={`projects.${projectIndex}.projectTechnology.${techIndex}`}
                                       {...field}
                                       placeholder="Tech"
-                                      className={`px-2 py-1 mt-1 border-2 font-normal w-36 peer ${
+                                      className={`px-2 py-1 mt-1 border-2 font-normal w-[4.3rem] peer ${
                                         errors?.projects &&
                                         errors?.projects[projectIndex]
                                           ?.projectTechnology &&
