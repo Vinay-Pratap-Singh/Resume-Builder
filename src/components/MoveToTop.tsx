@@ -5,7 +5,7 @@ const MoveToTop = () => {
         window.scrollTo(0, 0);
       }}
       type="button"
-      className="fixed z-50 p-1 text-white bg-teal-500 rounded-full shadow-md lg:p-2 bottom-5 lg:bottom-20 right-5 lg:right-10 hover:bg-teal-600"
+      className="fixed z-50 p-1 text-white bg-teal-500 rounded-full shadow-md lg:p-2 bottom-5 lg:bottom-20 right-5 lg:right-10 xl:bottom-24 xl:right-[calc(50%-700px)] hover:bg-teal-600 "
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

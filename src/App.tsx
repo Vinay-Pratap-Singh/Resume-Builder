@@ -95,7 +95,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <div className="relative">
       {/* adding the move to top button */}
       <MoveToTop />
 
@@ -106,7 +106,7 @@ const App = () => {
         {/* creating the main section */}
         <main
           id="home"
-          className="flex flex-col-reverse items-center justify-between gap-5 mx-5 mt-5 mb-10 lg:gap-10 lg:mx-24 lg:flex-row"
+          className="flex flex-col-reverse items-center justify-between gap-5 mx-5 mt-5 mb-10 lg:gap-10 lg:mx-16 xl:mx-24 lg:flex-row"
         >
           {/* section for the platform details */}
           <div className="lg:w-26rem">
@@ -142,7 +142,7 @@ const App = () => {
       {/* features section */}
       <section
         id="features"
-        className="flex flex-col items-center justify-between mx-5 lg:mx-24 lg:flex-row scroll_animation"
+        className="flex flex-col items-center justify-between mx-5 lg:mx-16 xl:mx-24 lg:flex-row scroll_animation"
       >
         {/* adding the features image */}
         <img
@@ -185,7 +185,7 @@ const App = () => {
       {/* template section */}
       <section
         id="template"
-        className="mx-5 my-5 space-y-5 lg:space-y-10 lg:my-10 lg:mx-24 scroll_animation"
+        className="mx-5 my-5 space-y-5 lg:space-y-10 lg:my-10 lg:mx-16 xl:mx-24 scroll_animation"
       >
         <h1 className="text-2xl font-bold text-center">Sample Templates</h1>
         <div className="flex flex-wrap items-center justify-center gap-5 lg:gap-10">
@@ -210,7 +210,7 @@ const App = () => {
       {/* FAQ section */}
       <section
         id="faq"
-        className="flex flex-col items-center justify-center gap-5 mx-5 my-5 lg:gap-10 lg:my-10 lg:mx-24 scroll_animation"
+        className="flex flex-col items-center justify-center gap-5 mx-5 my-5 lg:gap-10 lg:my-10 lg:mx-16 xl:24 scroll_animation"
       >
         <h1 className="text-xl font-bold text-center lg:text-2xl">
           FAQ (Frequently Asked Questions)
@@ -235,12 +235,19 @@ const App = () => {
       {/* contact section */}
       <section
         id="contact"
-        className="mx-5 space-y-5 lg:space-y-10 lg:mx-24 scroll_animation"
+        className="mx-5 space-y-5 lg:space-y-10 lg:mx-16 xl:mx-24 scroll_animation"
       >
         <h1 className="text-2xl font-bold text-center">Contact Us</h1>
         <div className="flex flex-col items-center justify-between lg:flex-row">
           <img src={contact} alt="contact us" className="lg:w-[30rem]" />
-          <form className="w-full p-5 space-y-3 rounded-md shadow-lg md:w-96">
+          <form
+            name="contact"
+            method="post"
+            className="w-full p-5 space-y-3 rounded-md shadow-lg md:w-96"
+          >
+            {/* for netlify bot */}
+            <input type="hidden" name="form-name" value="contact" />
+
             <label
               htmlFor="username"
               className="flex flex-col gap-1 font-medium"
@@ -251,6 +258,7 @@ const App = () => {
                 id="username"
                 placeholder="Vinay Pratap Singh"
                 required
+                minLength={5}
                 className="py-1 border-b-[1px] border-b-black  focus:outline-teal-500 focus:border-none focus:px-3 font-normal transition-all duration-200 ease-in-out"
               />
             </label>
@@ -265,6 +273,7 @@ const App = () => {
                 id="useremail"
                 placeholder="test@gmail.com"
                 required
+                pattern="/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
                 className="py-1 border-b-[1px] border-b-black  focus:outline-teal-500 focus:border-none focus:px-3 font-normal transition-all duration-200 ease-in-out"
               />
             </label>
@@ -276,6 +285,8 @@ const App = () => {
               Message *
               <textarea
                 id="usermessage"
+                required
+                minLength={20}
                 className="h-32 resize-none py-1 border-b-[1px] border-b-black  focus:outline-teal-500 focus:border-none focus:px-3 font-normal transition-all duration-200 ease-in-out"
                 placeholder="Thanks for this platform. Loved it."
               />
@@ -293,7 +304,7 @@ const App = () => {
 
       {/* adding the footer section */}
       <Footer />
-    </>
+    </div>
   );
 };
 

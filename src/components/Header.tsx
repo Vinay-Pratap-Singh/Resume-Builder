@@ -27,7 +27,7 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="sticky_navbar w-full px-2 lg:px-24 h-20 bg-[#385A64] flex items-center justify-between text-white">
+    <nav className="sticky_navbar w-full px-2 lg:px-16 xl:px-24 h-20 bg-[#385A64] flex items-center justify-between text-white">
       {/* creating the logo */}
       <Link to="/">
         <h1 className="text-xl font-semibold">
