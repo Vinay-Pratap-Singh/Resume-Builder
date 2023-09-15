@@ -27,7 +27,7 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="sticky_navbar w-full px-24 h-20 bg-[#385A64] flex items-center justify-between text-white">
+    <nav className="sticky_navbar w-full px-2 lg:px-24 h-20 bg-[#385A64] flex items-center justify-between text-white">
       {/* creating the logo */}
       <Link to="/">
         <h1 className="text-xl font-semibold">
@@ -36,7 +36,7 @@ const Header = () => {
       </Link>
 
       {/* adding the nav items */}
-      <ul className="flex items-center gap-10 font-semibold">
+      <ul className="items-center hidden gap-10 font-semibold lg:flex">
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -71,7 +71,7 @@ const Header = () => {
             location.pathname === "/form" || location.pathname === "/preview"
               ? "hidden"
               : "block"
-          }`}
+          } hidden lg:block`}
         >
           <button
             type="button"
@@ -91,7 +91,7 @@ const Header = () => {
           >
             <button
               type="button"
-              className="px-5 py-2 font-bold text-teal-500 transition-all duration-200 ease-in-out bg-white border border-teal-500 rounded-full hover:text-teal-600"
+              className="px-5 py-1 font-bold text-teal-500 transition-all duration-200 ease-in-out bg-white border border-teal-500 rounded-full lg:py-2 hover:text-teal-600"
             >
               Preview <span className="text-xl">&#8250;</span>
             </button>

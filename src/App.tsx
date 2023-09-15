@@ -106,12 +106,12 @@ const App = () => {
         {/* creating the main section */}
         <main
           id="home"
-          className="flex items-center justify-between gap-10 mx-24 mt-5 mb-10"
+          className="flex flex-col-reverse items-center justify-between gap-5 mx-5 mt-5 mb-10 lg:gap-10 lg:mx-24 lg:flex-row"
         >
           {/* section for the platform details */}
-          <div className="w-26rem">
+          <div className="lg:w-26rem">
             <p className="font-medium text-gray-600 ">Elevate your potential</p>
-            <h1 className="my-5 text-5xl font-bold leading-snug">
+            <h1 className="my-2 text-3xl font-bold leading-snug lg:my-5 lg:text-5xl">
               Put your <span className="text-teal-500">dream career</span>{" "}
               within reach.
             </h1>
@@ -122,7 +122,7 @@ const App = () => {
             </p>
             <button
               type="button"
-              className="px-5 py-2 mt-10 font-bold text-white transition-all duration-200 ease-in-out bg-teal-500 rounded-full hover:bg-teal-600"
+              className="px-5 py-2 mt-5 font-bold text-white transition-all duration-200 ease-in-out bg-teal-500 rounded-full lg:mt-10 hover:bg-teal-600"
             >
               <Link to="/form">
                 Get Started <span className="text-xl">&#8250;</span>
@@ -131,20 +131,28 @@ const App = () => {
           </div>
 
           {/* adding the main image */}
-          <img src={mainImage} alt="home page" className="w-[30rem]" />
+          <img
+            src={mainImage}
+            alt="home page"
+            className="lg:w-[30rem] w-full"
+          />
         </main>
       </header>
 
       {/* features section */}
       <section
         id="features"
-        className="flex items-center justify-between mx-24 scroll_animation"
+        className="flex flex-col items-center justify-between mx-5 lg:mx-24 lg:flex-row scroll_animation"
       >
         {/* adding the features image */}
-        <img src={featuresImage} alt="feature section" className="w-[30rem]" />
+        <img
+          src={featuresImage}
+          alt="feature section"
+          className="w-full lg:w-[30rem]"
+        />
 
         {/* creating the features */}
-        <div className="w-[26rem] space-y-5">
+        <div className="lg:w-[26rem] space-y-2 lg:space-y-5">
           <p className="font-medium text-gray-600 ">
             Free online resume builder
           </p>
@@ -177,10 +185,10 @@ const App = () => {
       {/* template section */}
       <section
         id="template"
-        className="mx-24 my-10 space-y-10 scroll_animation"
+        className="mx-5 my-5 space-y-5 lg:space-y-10 lg:my-10 lg:mx-24 scroll_animation"
       >
         <h1 className="text-2xl font-bold text-center">Sample Templates</h1>
-        <div className="flex flex-wrap items-center justify-center gap-10">
+        <div className="flex flex-wrap items-center justify-center gap-5 lg:gap-10">
           <img
             className="h-80 w-64 border-[1px] border-gray-300 rounded-md hover:border-none hover:shadow-md hover:-translate-y-2 transition-all ease-in-out duration-300"
             src={template1}
@@ -202,12 +210,12 @@ const App = () => {
       {/* FAQ section */}
       <section
         id="faq"
-        className="flex flex-col items-center justify-center gap-10 mx-24 my-10 scroll_animation"
+        className="flex flex-col items-center justify-center gap-5 mx-5 my-5 lg:gap-10 lg:my-10 lg:mx-24 scroll_animation"
       >
-        <h1 className="text-2xl font-bold text-center">
+        <h1 className="text-xl font-bold text-center lg:text-2xl">
           FAQ (Frequently Asked Questions)
         </h1>
-        <div className="w-[500px] space-y-2">
+        <div className="w-full lg:w-[500px] space-y-2">
           {faqData.length === 0 ? (
             <h1 className="text-xl font-bold">No FAQ available</h1>
           ) : (
@@ -225,11 +233,14 @@ const App = () => {
       </section>
 
       {/* contact section */}
-      <section id="contact" className="mx-24 space-y-10 scroll_animation">
+      <section
+        id="contact"
+        className="mx-5 space-y-5 lg:space-y-10 lg:mx-24 scroll_animation"
+      >
         <h1 className="text-2xl font-bold text-center">Contact Us</h1>
-        <div className="flex items-center justify-between">
-          <img src={contact} alt="contact us" className="w-[30rem]" />
-          <form className="p-5 space-y-3 rounded-md shadow-lg w-96">
+        <div className="flex flex-col items-center justify-between lg:flex-row">
+          <img src={contact} alt="contact us" className="lg:w-[30rem]" />
+          <form className="w-full p-5 space-y-3 rounded-md shadow-lg md:w-96">
             <label
               htmlFor="username"
               className="flex flex-col gap-1 font-medium"
