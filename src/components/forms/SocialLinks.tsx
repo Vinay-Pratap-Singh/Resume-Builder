@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IsocialLinks } from "../../helper/interface";
 
@@ -10,9 +10,6 @@ interface Iprops {
 const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   // getting the data from local storage
   const storedData = localStorage.getItem("socialLinks");
-  if (storedData) {
-    console.log(JSON.parse(storedData));
-  }
 
   const {
     register,
@@ -25,7 +22,6 @@ const SocialLinks: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
   // function to handle form submit through save and next button
   const onFormSubmit: SubmitHandler<IsocialLinks> = (data) => {
-    console.log(data);
     // saving data to the local storage
     localStorage.setItem("socialLinks", JSON.stringify(data));
     setCurrentStep(currentStep + 1);

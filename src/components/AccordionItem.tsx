@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface Iprop {
   title: string;
@@ -9,14 +9,14 @@ const AccordionItem = ({ title, content }: Iprop) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border rounded-lg mb-4 w-full m-auto">
+    <div className="w-full m-auto mb-4 border rounded-lg">
       <button
         type="button"
-        className="w-full px-4 py-2 text-left bg-gray-100 text-gray-800 font-semibold flex items-center justify-between"
+        className="flex items-center justify-between w-full px-4 py-2 font-semibold text-left text-gray-800 bg-gray-100"
         onClick={() => setIsOpen(!isOpen)}
       >
         {title}
-        <span className="transform rotate-0 transition-transform text-xl">
+        <span className="text-xl transition-transform transform rotate-0">
           {isOpen ? "-" : "+"}
         </span>
       </button>

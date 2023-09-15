@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
@@ -57,6 +57,7 @@ const Preview = () => {
     <div>
       {/* adding the header */}
       <Header />
+      {/* vinay */}
 
       {/* for showing the resume preview */}
       <div ref={report}>

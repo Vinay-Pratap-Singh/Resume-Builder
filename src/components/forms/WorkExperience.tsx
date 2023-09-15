@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import {
   Controller,
   SubmitHandler,
@@ -20,9 +20,6 @@ interface IformData {
 const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   // getting the data from local storage
   const storedData = localStorage.getItem("workExperience");
-  if (storedData) {
-    console.log(JSON.parse(storedData));
-  }
 
   const {
     register,
@@ -63,7 +60,6 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
   // function to handle form submit through save and next button
   const onFormSubmit: SubmitHandler<IformData> = (data) => {
-    console.log(data);
     // saving data to the local storage
     localStorage.setItem("workExperience", JSON.stringify(data));
     setCurrentStep(currentStep + 1);

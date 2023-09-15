@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import {
   Controller,
   SubmitHandler,
@@ -42,7 +42,6 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
       toast.error("Please add atleast one project");
       return;
     }
-    console.log(data);
     // saving data to the local storage
     localStorage.setItem("projects", JSON.stringify(data));
     setCurrentStep(currentStep + 1);

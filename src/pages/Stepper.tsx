@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   AcademicCapIcon,
   BookOpenIcon,
@@ -8,6 +8,7 @@ import {
   IdentificationIcon,
   PrinterIcon,
 } from "@heroicons/react/24/solid";
+import { nanoid } from "nanoid";
 import PersonalDetails from "../components/forms/PersonalDetails";
 import EducationalDetails from "../components/forms/EducationalDetails";
 import Projects from "../components/forms/Projects";
@@ -30,7 +31,7 @@ const Stepper = () => {
       icons: <IdentificationIcon />,
       component: (
         <PersonalDetails
-          key={Date.now()}
+          key={nanoid()}
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
@@ -44,7 +45,7 @@ const Stepper = () => {
       icons: <AcademicCapIcon />,
       component: (
         <EducationalDetails
-          key={Date.now()}
+          key={nanoid()}
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
@@ -58,7 +59,7 @@ const Stepper = () => {
       icons: <BriefcaseIcon />,
       component: (
         <WorkExperience
-          key={Date.now()}
+          key={nanoid()}
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
@@ -72,7 +73,7 @@ const Stepper = () => {
       icons: <BookOpenIcon />,
       component: (
         <Projects
-          key={Date.now()}
+          key={nanoid()}
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
@@ -86,7 +87,7 @@ const Stepper = () => {
       icons: <ClipboardDocumentIcon />,
       component: (
         <Certificates
-          key={Date.now()}
+          key={nanoid()}
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
@@ -100,7 +101,7 @@ const Stepper = () => {
       icons: <ChatBubbleLeftIcon />,
       component: (
         <SocialLinks
-          key={Date.now()}
+          key={nanoid()}
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
@@ -114,7 +115,7 @@ const Stepper = () => {
       icons: <PrinterIcon />,
       component: (
         <Template
-          key={Date.now()}
+          key={nanoid()}
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}
         />
@@ -144,7 +145,7 @@ const Stepper = () => {
           return step.status === "complete" ? (
             <>
               <div
-                key={Date.now()}
+                key={nanoid()}
                 className="relative flex items-center text-teal-600"
               >
                 <div className="flex items-center justify-center w-12 h-12 transition duration-500 ease-in-out border-2 border-teal-600 rounded-full">
@@ -159,7 +160,7 @@ const Stepper = () => {
           ) : step.status === "current" ? (
             <>
               <div
-                key={Date.now()}
+                key={nanoid()}
                 className="relative flex items-center text-white"
               >
                 <div className="flex items-center justify-center w-12 h-12 transition duration-500 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-full">
@@ -176,7 +177,7 @@ const Stepper = () => {
           ) : (
             <>
               <div
-                key={Date.now()}
+                key={nanoid()}
                 className="relative flex items-center text-gray-500"
               >
                 <div className="flex items-center justify-center w-12 h-12 transition duration-500 ease-in-out border-2 border-gray-300 rounded-full">

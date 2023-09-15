@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { Icertificate } from "../../helper/interface";
 
@@ -15,9 +15,6 @@ interface IformData {
 const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   // getting the data from local storage
   const storedData = localStorage.getItem("certificate");
-  if (storedData) {
-    console.log(JSON.parse(storedData));
-  }
 
   const { register, handleSubmit, control, watch } = useForm<IformData>({
     defaultValues: storedData ? { ...JSON.parse(storedData) } : {},
@@ -33,7 +30,6 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
   // function to handle form submit through save and next button
   const onFormSubmit: SubmitHandler<IformData> = (data) => {
-    console.log(data);
     // saving data to the local storage
     localStorage.setItem("certificate", JSON.stringify(data));
     setCurrentStep(currentStep + 1);

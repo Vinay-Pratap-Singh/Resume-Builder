@@ -1,5 +1,3 @@
-import React from "react";
-
 const MoveToTop = () => {
   return (
     <button
@@ -7,7 +5,7 @@ const MoveToTop = () => {
         window.scrollTo(0, 0);
       }}
       type="button"
-      className="fixed bottom-20 right-10 rounded-full bg-teal-500 hover:bg-teal-600 p-2 text-white shadow-md"
+      className="fixed p-2 text-white bg-teal-500 rounded-full shadow-md bottom-20 right-10 hover:bg-teal-600"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

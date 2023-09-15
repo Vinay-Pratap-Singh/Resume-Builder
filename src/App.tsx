@@ -1,4 +1,4 @@
-import React, { useEffect, useId } from "react";
+import { useEffect, useId } from "react";
 import { Link } from "react-router-dom";
 import mainImage from "./assets/mainImage.jpg";
 import featuresImage from "./assets/features.jpg";
@@ -106,12 +106,12 @@ const App = () => {
         {/* creating the main section */}
         <main
           id="home"
-          className="flex items-center justify-between gap-10 mb-10 mt-5 mx-24"
+          className="flex items-center justify-between gap-10 mx-24 mt-5 mb-10"
         >
           {/* section for the platform details */}
           <div className="w-26rem">
-            <p className="text-gray-600 font-medium ">Elevate your potential</p>
-            <h1 className="text-5xl font-bold my-5 leading-snug">
+            <p className="font-medium text-gray-600 ">Elevate your potential</p>
+            <h1 className="my-5 text-5xl font-bold leading-snug">
               Put your <span className="text-teal-500">dream career</span>{" "}
               within reach.
             </h1>
@@ -122,7 +122,7 @@ const App = () => {
             </p>
             <button
               type="button"
-              className="mt-10 bg-teal-500 rounded-full px-5 py-2 text-white font-bold hover:bg-teal-600 transition-all duration-200 ease-in-out"
+              className="px-5 py-2 mt-10 font-bold text-white transition-all duration-200 ease-in-out bg-teal-500 rounded-full hover:bg-teal-600"
             >
               <Link to="/form">
                 Get Started <span className="text-xl">&#8250;</span>
@@ -138,14 +138,14 @@ const App = () => {
       {/* features section */}
       <section
         id="features"
-        className="scroll_animation flex items-center justify-between mx-24"
+        className="flex items-center justify-between mx-24 scroll_animation"
       >
         {/* adding the features image */}
         <img src={featuresImage} alt="feature section" className="w-[30rem]" />
 
         {/* creating the features */}
         <div className="w-[26rem] space-y-5">
-          <p className="text-gray-600 font-medium ">
+          <p className="font-medium text-gray-600 ">
             Free online resume builder
           </p>
           <h1 className="text-2xl font-bold">
@@ -156,7 +156,7 @@ const App = () => {
             builder. Craft a polished and professional resume that captures
             attention. Start building your impressive resume today!
           </p>
-          <ul className="font-medium text-gray-600 list-disc pl-4">
+          <ul className="pl-4 font-medium text-gray-600 list-disc">
             <li>Customizable Templates</li>
             <li>Easy Editing and Formatting</li>
             <li>One-Click Download</li>
@@ -165,7 +165,7 @@ const App = () => {
 
           <button
             type="button"
-            className="bg-teal-500 rounded-full px-5 py-2 text-white font-bold hover:bg-teal-600 transition-all duration-200 ease-in-out"
+            className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-500 rounded-full hover:bg-teal-600"
           >
             <Link to="/form">
               Build a resume <span className="text-xl">&#8250;</span>{" "}
@@ -177,10 +177,10 @@ const App = () => {
       {/* template section */}
       <section
         id="template"
-        className="scroll_animation my-10 mx-24 space-y-10"
+        className="mx-24 my-10 space-y-10 scroll_animation"
       >
         <h1 className="text-2xl font-bold text-center">Sample Templates</h1>
-        <div className="flex items-center justify-center flex-wrap gap-10">
+        <div className="flex flex-wrap items-center justify-center gap-10">
           <img
             className="h-80 w-64 border-[1px] border-gray-300 rounded-md hover:border-none hover:shadow-md hover:-translate-y-2 transition-all ease-in-out duration-300"
             src={template1}
@@ -202,7 +202,7 @@ const App = () => {
       {/* FAQ section */}
       <section
         id="faq"
-        className="scroll_animation mx-24 my-10 flex flex-col items-center justify-center gap-10"
+        className="flex flex-col items-center justify-center gap-10 mx-24 my-10 scroll_animation"
       >
         <h1 className="text-2xl font-bold text-center">
           FAQ (Frequently Asked Questions)
@@ -225,11 +225,11 @@ const App = () => {
       </section>
 
       {/* contact section */}
-      <section id="contact" className="scroll_animation mx-24 space-y-10">
+      <section id="contact" className="mx-24 space-y-10 scroll_animation">
         <h1 className="text-2xl font-bold text-center">Contact Us</h1>
         <div className="flex items-center justify-between">
           <img src={contact} alt="contact us" className="w-[30rem]" />
-          <form className="shadow-lg p-5 rounded-md w-96 space-y-3">
+          <form className="p-5 space-y-3 rounded-md shadow-lg w-96">
             <label
               htmlFor="username"
               className="flex flex-col gap-1 font-medium"
@@ -272,7 +272,7 @@ const App = () => {
 
             <button
               type="submit"
-              className="w-full bg-teal-500 hover:bg-teal-600 transition-all duration-200 ease-in-out text-white py-2 font-semibold text-lg"
+              className="w-full py-2 text-lg font-semibold text-white transition-all duration-200 ease-in-out bg-teal-500 hover:bg-teal-600"
             >
               Submit
             </button>

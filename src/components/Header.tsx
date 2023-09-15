@@ -1,8 +1,30 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
+  const [isData, setIsData] = useState(false);
+
+  // for checking data exist or not
+  useEffect(() => {
+    const personalDetails = JSON.parse(
+      localStorage.getItem("personalDetails") || "{}",
+    );
+    const educationalDetails = JSON.parse(
+      localStorage.getItem("educationalDetails") || "{}",
+    );
+    const projects = JSON.parse(localStorage.getItem("projects") || "[]");
+    const socialLinks = JSON.parse(localStorage.getItem("socialLinks") || "{}");
+
+    if (
+      Object.keys(personalDetails).length &&
+      Object.keys(educationalDetails).length &&
+      Object.keys(projects).length &&
+      Object.keys(socialLinks).length
+    ) {
+      setIsData(true);
+    }
+  }, []);
 
   return (
     <nav className="sticky_navbar w-full px-24 h-20 bg-[#385A64] flex items-center justify-between text-white">
@@ -40,22 +62,42 @@ const Header = () => {
         </li>
       </ul>
 
-      {/* adding the button */}
-      <Link
-        to="/form"
-        className={`${
-          location.pathname === "/form" || location.pathname === "/preview"
-            ? "hidden"
-            : "block"
-        }`}
-      >
-        <button
-          type="button"
-          className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-500 rounded-full hover:bg-teal-600"
+      {/* adding the buttons */}
+      <div className="flex items-center gap-5">
+        {/* get started button */}
+        <Link
+          to="/form"
+          className={`${
+            location.pathname === "/form" || location.pathname === "/preview"
+              ? "hidden"
+              : "block"
+          }`}
         >
-          Get Started <span className="text-xl">&#8250;</span>
-        </button>
-      </Link>
+          <button
+            type="button"
+            className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-500 rounded-full hover:bg-teal-600"
+          >
+            Get Started <span className="text-xl">&#8250;</span>
+          </button>
+        </Link>
+
+        {/* preview button */}
+        {isData && (
+          <Link
+            to="/preview"
+            className={`${
+              location.pathname === "/preview" ? "hidden" : "block"
+            }`}
+          >
+            <button
+              type="button"
+              className="px-5 py-2 font-bold text-teal-500 transition-all duration-200 ease-in-out bg-white border border-teal-500 rounded-full hover:text-teal-600"
+            >
+              Preview <span className="text-xl">&#8250;</span>
+            </button>
+          </Link>
+        )}
+      </div>
     </nav>
   );
 };

@@ -1,5 +1,5 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { nanoid } from "nanoid";
 import {
   Icertificate,
   IpreviewData,
@@ -165,7 +165,7 @@ const Template1 = ({ data }: Iprops) => {
                 {(data?.workExperience?.workExperience ?? []).map(
                   (work: IworkExperience) => {
                     return (
-                      <li key={Date.now()}>
+                      <li key={nanoid()}>
                         <h1 className="text-xl font-bold">
                           {work?.designation}
                         </h1>
@@ -178,7 +178,7 @@ const Template1 = ({ data }: Iprops) => {
                         </p>
                         <ul className="pl-5 list-disc text-md">
                           {work?.workDone.map((task: string) => {
-                            return <li key={Date.now()}>{task}</li>;
+                            return <li key={nanoid()}>{task}</li>;
                           })}
                         </ul>
                       </li>
@@ -196,7 +196,7 @@ const Template1 = ({ data }: Iprops) => {
               {(Array.isArray(data?.projects) ? data?.projects ?? [] : []).map(
                 (project: Iproject) => {
                   return (
-                    <li key={Date.now()}>
+                    <li key={nanoid()}>
                       <h1 className="text-xl font-semibold">
                         {project?.projectName}
                       </h1>
@@ -205,7 +205,7 @@ const Template1 = ({ data }: Iprops) => {
                         {project?.projectTechnology?.map((tech: string) => {
                           return (
                             <li
-                              key={Date.now()}
+                              key={nanoid()}
                               className="flex items-center justify-center px-3 py-1 text-sm text-white bg-gray-500 rounded-md"
                             >
                               {tech}
@@ -230,7 +230,7 @@ const Template1 = ({ data }: Iprops) => {
               {data?.personalDetails?.skills?.map((skill) => {
                 return (
                   <li
-                    key={Date.now()}
+                    key={nanoid()}
                     className="px-3 py-1 text-sm text-white bg-gray-500 rounded-md "
                   >
                     {skill?.name}
@@ -248,7 +248,7 @@ const Template1 = ({ data }: Iprops) => {
                 {data?.certificate?.certificates?.map(
                   (certificate: Icertificate) => {
                     return (
-                      <li key={Date.now()}>
+                      <li key={nanoid()}>
                         <h1 className="text-lg font-semibold">
                           {certificate?.certificateName}
                         </h1>
@@ -271,7 +271,7 @@ const Template1 = ({ data }: Iprops) => {
               ).map((lang: { language: string }) => {
                 return (
                   <li
-                    key={Date.now()}
+                    key={nanoid()}
                     className="px-3 py-1 text-sm text-white bg-gray-500 rounded-md"
                   >
                     {lang.language}
@@ -291,7 +291,7 @@ const Template1 = ({ data }: Iprops) => {
               ).map((interest: { hobby: string }) => {
                 return (
                   <li
-                    key={Date.now()}
+                    key={nanoid()}
                     className="px-3 py-1 text-sm text-white bg-gray-500 rounded-md"
                   >
                     {interest?.hobby}

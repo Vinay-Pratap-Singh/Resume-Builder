@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Link } from "react-router-dom";
 
 interface Iprops {
@@ -16,25 +16,25 @@ const Template: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   };
 
   return (
-    <div className="m-auto text-center space-y-10">
-      <h1 className="font-bold text-2xl">Choose any template</h1>
-      <header className="flex items-center justify-center flex-wrap gap-10">
-        <div className="h-80 w-72 shadow-md font-semibold flex items-center justify-center">
+    <div className="m-auto space-y-10 text-center">
+      <h1 className="text-2xl font-bold">Choose any template</h1>
+      <header className="flex flex-wrap items-center justify-center gap-10">
+        <div className="flex items-center justify-center font-semibold shadow-md h-80 w-72">
           Template 1
         </div>
-        <div className="h-80 w-72 shadow-md font-semibold flex items-center justify-center">
+        <div className="flex items-center justify-center font-semibold shadow-md h-80 w-72">
           Template 2
         </div>
-        <div className="h-80 w-72 shadow-md font-semibold flex items-center justify-center">
+        <div className="flex items-center justify-center font-semibold shadow-md h-80 w-72">
           Template 3
         </div>
       </header>
 
       {/* button to submit the form */}
-      <footer className="w-full flex items-center justify-center gap-2">
+      <footer className="flex items-center justify-center w-full gap-2">
         <button
           type="button"
-          className="border-2 border-black px-5 py-2 rounded-md font-bold"
+          className="px-5 py-2 font-bold border-2 border-black rounded-md"
           onClick={handlePreviousBtn}
         >
           Back
@@ -42,7 +42,7 @@ const Template: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         <Link to="/preview">
           <button
             type="submit"
-            className="bg-teal-600 border-2 border-teal-600 text-white px-5 py-2 rounded-md font-bold"
+            className="px-5 py-2 font-bold text-white bg-teal-600 border-2 border-teal-600 rounded-md"
           >
             Create Resume
           </button>

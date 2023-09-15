@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { IeducationalDetails } from "../../helper/interface";
@@ -11,9 +11,6 @@ interface Iprops {
 const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   // getting the data from local storage
   const storedData = localStorage.getItem("educationalDetails");
-  if (storedData) {
-    console.log(JSON.parse(storedData));
-  }
 
   const {
     register,
