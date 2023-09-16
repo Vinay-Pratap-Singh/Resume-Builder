@@ -648,14 +648,14 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         {/* button to submit the form */}
         <button
           type="button"
-          className="px-3 py-1 font-bold transition-all duration-200 ease-in-out border-2 border-black rounded-md lg:px-5 lg:py-2 hover:bg-gray-100"
+          className="px-3 py-1 text-sm font-semibold transition-all duration-200 ease-in-out border-2 border-black rounded-md lg:font-bold lg:text-base lg:px-5 lg:py-2 hover:bg-gray-100"
           onClick={handlePreviousBtn}
         >
           Back
         </button>
         <button
           type="submit"
-          className="px-3 py-1 font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md lg:px-5 lg:py-2 hover:bg-teal-700 hover:border-teal-700"
+          className="px-3 py-1 text-sm font-semibold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md lg:font-bold lg:text-base lg:px-5 lg:py-2 hover:bg-teal-700 hover:border-teal-700"
         >
           Save and Next
         </button>

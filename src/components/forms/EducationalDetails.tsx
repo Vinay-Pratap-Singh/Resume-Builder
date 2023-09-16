@@ -56,17 +56,22 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   return (
     <form
       onSubmit={handleSubmit(onFormSubmit)}
-      className="flex flex-col justify-center gap-10"
+      className="flex flex-col justify-center gap-5 lg:gap-10"
     >
       {/* for educational details */}
-      <header className="grid justify-center grid-cols-2 gap-10 m-auto w-fit">
+      <section className="grid justify-center grid-cols-1 gap-5 px-2 m-auto lg:gap-10 md:grid-cols-2">
         {/* for high school details */}
-        <div className="space-y-3 w-96">
-          <h1 className="text-xl font-bold">Enter Your High School Details</h1>
+        <div className="w-full space-y-3">
+          <h1 className="text-lg font-bold lg:text-xl">
+            Enter Your High School Details
+          </h1>
 
           {/* for high school name */}
           <section className="w-full">
-            <label htmlFor="highSchool" className="font-semibold">
+            <label
+              htmlFor="highSchool"
+              className="text-sm font-semibold lg:text-base"
+            >
               School Name
               <input
                 id="highSchool"
@@ -90,13 +95,18 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               />
             </label>
             {errors.highSchool?.name && (
-              <p className="text-red-500">{errors.highSchool.name.message}</p>
+              <p className="text-sm text-red-500 lg:text-base">
+                {errors.highSchool.name.message}
+              </p>
             )}
           </section>
 
           {/* for high school start date */}
           <section className="w-full">
-            <label htmlFor="highSchoolStartData" className="font-semibold">
+            <label
+              htmlFor="highSchoolStartData"
+              className="text-sm font-semibold lg:text-base"
+            >
               Start Date
               <input
                 id="highSchoolStartData"
@@ -115,7 +125,7 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               />
             </label>
             {errors.highSchool?.startDate && (
-              <p className="text-red-500">
+              <p className="text-sm text-red-500 lg:text-base">
                 {errors.highSchool.startDate.message}
               </p>
             )}
@@ -123,7 +133,10 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for high school end date */}
           <section className="w-full">
-            <label htmlFor="highSchoolEndData" className="font-semibold">
+            <label
+              htmlFor="highSchoolEndData"
+              className="text-sm font-semibold lg:text-base"
+            >
               End Date
               <input
                 id="highSchoolEndData"
@@ -142,7 +155,7 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               />
             </label>
             {errors.highSchool?.endDate && (
-              <p className="text-red-500">
+              <p className="text-sm text-red-500 lg:text-base">
                 {errors.highSchool.endDate.message}
               </p>
             )}
@@ -150,12 +163,17 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         </div>
 
         {/* for 10 + 2 */}
-        <div className="space-y-3 w-96">
-          <h1 className="text-xl font-bold">Enter Your (10 + 2) Details</h1>
+        <div className="w-full space-y-3">
+          <h1 className="text-lg font-bold lg:text-xl">
+            Enter Your (10 + 2) Details
+          </h1>
 
           {/* for 10 + 2 name */}
           <section className="w-full">
-            <label htmlFor="intermediate" className="font-semibold">
+            <label
+              htmlFor="intermediate"
+              className="text-sm font-semibold lg:text-base"
+            >
               School Name
               <input
                 id="intermediate"
@@ -179,13 +197,18 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               />
             </label>
             {errors.intermediate?.name && (
-              <p className="text-red-500">{errors.intermediate.name.message}</p>
+              <p className="text-sm text-red-500 lg:text-base">
+                {errors.intermediate.name.message}
+              </p>
             )}
           </section>
 
           {/* for 10 + 2 start date */}
           <section className="w-full">
-            <label htmlFor="intermediateStartData" className="font-semibold">
+            <label
+              htmlFor="intermediateStartData"
+              className="text-sm font-semibold lg:text-base"
+            >
               Start Date
               <input
                 id="intermediateStartData"
@@ -204,7 +227,7 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               />
             </label>
             {errors.intermediate?.startDate && (
-              <p className="text-red-500">
+              <p className="text-sm text-red-500 lg:text-base">
                 {errors.intermediate.startDate.message}
               </p>
             )}
@@ -212,7 +235,10 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for 10 + 2 end date */}
           <section className="w-full">
-            <label htmlFor="intermediateEndData" className="font-semibold">
+            <label
+              htmlFor="intermediateEndData"
+              className="text-sm font-semibold lg:text-base"
+            >
               End Date
               <input
                 id="intermediateEndData"
@@ -231,7 +257,7 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               />
             </label>
             {errors.intermediate?.endDate && (
-              <p className="text-red-500">
+              <p className="text-sm text-red-500 lg:text-base">
                 {errors.intermediate.endDate.message}
               </p>
             )}
@@ -239,14 +265,17 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         </div>
 
         {/* for graduation */}
-        <div className="space-y-3 w-96">
-          <h1 className="text-xl font-bold">
+        <div className="w-full space-y-3">
+          <h1 className="text-lg font-bold lg:text-xl">
             Enter Your Graduation Details (Optional)
           </h1>
 
           {/* for graduation name */}
           <section className="w-full">
-            <label htmlFor="graduationName" className="font-semibold">
+            <label
+              htmlFor="graduationName"
+              className="text-sm font-semibold lg:text-base"
+            >
               College Name
               <input
                 id="graduationName"
@@ -264,7 +293,10 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for graduation start date */}
           <section className="w-full">
-            <label htmlFor="graduationStartData" className="font-semibold">
+            <label
+              htmlFor="graduationStartData"
+              className="text-sm font-semibold lg:text-base"
+            >
               Start Date
               <input
                 id="graduationStartData"
@@ -281,7 +313,10 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for graduation end date */}
           <section className="w-full">
-            <label htmlFor="graduationEndData" className="font-semibold">
+            <label
+              htmlFor="graduationEndData"
+              className="text-sm font-semibold lg:text-base"
+            >
               End Date
               <input
                 id="graduationEndData"
@@ -298,14 +333,17 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         </div>
 
         {/* for postgraduation */}
-        <div className="space-y-3 w-96">
-          <h1 className="text-xl font-bold">
+        <div className="w-full space-y-3">
+          <h1 className="text-lg font-bold lg:text-xl">
             Enter Post Graduation Details (Optional)
           </h1>
 
           {/* for postgraduation name */}
           <section className="w-full">
-            <label htmlFor="postgraduationName" className="font-semibold">
+            <label
+              htmlFor="postgraduationName"
+              className="text-sm font-semibold lg:text-base"
+            >
               College Name
               <input
                 id="postgraduationName"
@@ -323,7 +361,10 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for postgraduation start date */}
           <section className="w-full">
-            <label htmlFor="postgraduationStartData" className="font-semibold">
+            <label
+              htmlFor="postgraduationStartData"
+              className="text-sm font-semibold lg:text-base"
+            >
               Start Date
               <input
                 id="postgraduationStartData"
@@ -340,7 +381,10 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
           {/* for postgraduation end date */}
           <section className="w-full">
-            <label htmlFor="postgraduationEndData" className="font-semibold">
+            <label
+              htmlFor="postgraduationEndData"
+              className="text-sm font-semibold lg:text-base"
+            >
               End Date
               <input
                 id="postgraduationEndData"
@@ -355,20 +399,20 @@ const EducationalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             </label>
           </section>
         </div>
-      </header>
+      </section>
 
       {/* button to submit the form */}
       <footer className="m-auto space-x-5 w-fit">
         <button
           type="button"
-          className="px-5 py-2 font-bold transition-all duration-200 ease-in-out border-2 border-black rounded-md hover:bg-gray-100"
+          className="px-3 py-1 text-sm font-semibold transition-all duration-200 ease-in-out border-2 border-black rounded-md lg:font-bold lg:text-base lg:px-5 lg:py-2 hover:bg-gray-100"
           onClick={handlePreviousBtn}
         >
           Back
         </button>
         <button
           type="submit"
-          className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md hover:bg-teal-700 hover:border-teal-700"
+          className="px-3 py-1 text-sm font-semibold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md lg:font-bold lg:text-base lg:px-5 lg:py-2 hover:bg-teal-700 hover:border-teal-700"
         >
           Save and Next
         </button>

@@ -79,11 +79,11 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   return (
     <form
       onSubmit={handleSubmit(onFormSubmit)}
-      className="flex flex-col justify-center w-full gap-10 m-auto"
+      className="flex flex-col justify-center w-full gap-5 m-auto lg:gap-10"
     >
       <div className="flex flex-col space-y-3">
         {/* for checking user has certificate or not */}
-        <section className="flex items-center justify-center w-full gap-2 text-lg font-semibold">
+        <section className="flex items-center justify-center w-full gap-2 text-base font-semibold lg:text-lg">
           <label htmlFor="hasExperience" className="font-bold">
             <input
               id="hasExperience"
@@ -99,34 +99,32 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         {hasExperience ? (
           <div className="flex flex-col items-center gap-5">
             {/* button to add experience */}
-            <div>
-              <button
-                type="button"
-                className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md hover:bg-teal-700 hover:border-teal-700"
-                onClick={() =>
-                  append({
-                    companyName: "",
-                    designation: "",
-                    startDuration: null,
-                    endDuration: null,
-                    workDone: [],
-                  })
-                }
-              >
-                Add Experience
-              </button>
-            </div>
+            <button
+              type="button"
+              className="px-3 py-1 text-sm font-semibold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md lg:font-bold lg:text-base lg:px-5 lg:py-2 hover:bg-teal-700 hover:border-teal-700"
+              onClick={() =>
+                append({
+                  companyName: "",
+                  designation: "",
+                  startDuration: null,
+                  endDuration: null,
+                  workDone: [],
+                })
+              }
+            >
+              Add Experience
+            </button>
 
             {/* if user has experience */}
-            <div className="flex flex-wrap items-stretch self-stretch justify-center gap-5">
+            <div className="flex flex-wrap items-stretch self-stretch justify-center gap-5 px-2">
               {fields.map((works: any, worksIndex) => (
                 <div
                   key={works.id}
-                  className="relative flex flex-col justify-between p-4 space-y-3 rounded-md shadow-md w-96"
+                  className="relative flex flex-col justify-between w-full p-2 space-y-3 rounded-md shadow-md lg:p-4 lg:w-96"
                 >
                   {/* for work experience details */}
                   <div className="flex flex-col gap-3">
-                    <h1 className="text-xl font-bold">
+                    <h1 className="text-lg font-bold lg:text-xl">
                       Company {worksIndex + 1}
                     </h1>
 
@@ -148,7 +146,7 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                       render={({ field }: any) => (
                         <label
                           htmlFor={`workExperience.${worksIndex}.companyName`}
-                          className="font-semibold"
+                          className="text-sm font-semibold lg:text-base"
                         >
                           Company Name
                           <input
@@ -185,7 +183,7 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                       }}
                       render={({ field }: any) => (
                         <label
-                          className="font-semibold"
+                          className="text-sm font-semibold lg:text-base"
                           htmlFor={`workExperience.${worksIndex}.designation`}
                         >
                           Job Role
@@ -219,7 +217,7 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                       render={({ field }: any) => (
                         <label
                           htmlFor={`workExperience.${worksIndex}.startDuration`}
-                          className="font-semibold"
+                          className="text-sm font-semibold lg:text-base"
                         >
                           From (Joining Date)
                           <input
@@ -251,7 +249,7 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                       render={({ field }: any) => (
                         <label
                           htmlFor={`workExperience.${worksIndex}.endDuration`}
-                          className="font-semibold"
+                          className="text-sm font-semibold lg:text-base"
                         >
                           To (Sepration Date)
                           <input
@@ -274,7 +272,9 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                     <div className="flex flex-col gap-0">
                       {/* for title and add button */}
                       <div className="flex items-center justify-between">
-                        <h4 className="font-semibold">Your contribution</h4>
+                        <h4 className="text-sm font-semibold lg:text-base">
+                          Your contribution
+                        </h4>
                         {/* button to add tech */}
                         <button
                           type="button"
@@ -287,7 +287,7 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                             viewBox="0 0 24 24"
                             strokeWidth="1.5"
                             stroke="currentColor"
-                            className="w-7 h-7"
+                            className="w-6 h-6 lg:w-7 lg:h-7"
                           >
                             <path
                               strokeLinecap="round"
@@ -309,7 +309,7 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                               render={({ field }: any) => (
                                 <div className="flex items-center w-full">
                                   <label
-                                    className="w-full font-semibold"
+                                    className="w-full text-sm font-semibold lg:text-base"
                                     htmlFor={`workExperience.${worksIndex}.workDone.${workIndex}`}
                                   >
                                     <div className="flex items-center w-full">
@@ -349,7 +349,7 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                                           viewBox="0 0 24 24"
                                           strokeWidth="1.5"
                                           stroke="currentColor"
-                                          className="w-6 h-6"
+                                          className="w-5 h-5 lg:w-6 lg:h-6"
                                         >
                                           <path
                                             strokeLinecap="round"
@@ -370,7 +370,7 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
                   {/* button to remove work experience */}
                   <button
-                    className="flex items-center justify-center gap-2 px-3 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-red-500 rounded-md hover:bg-red-600"
+                    className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-semibold text-white transition-all duration-200 ease-in-out bg-red-500 rounded-md lg:text-base lg:font-bold hover:bg-red-600"
                     type="button"
                     onClick={() => remove(worksIndex)}
                   >
@@ -398,14 +398,14 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             <footer className="m-auto space-x-5 w-fit">
               <button
                 type="button"
-                className="px-5 py-2 font-bold transition-all duration-200 ease-in-out border-2 border-black rounded-md hover:bg-gray-100"
+                className="px-3 py-1 text-sm font-semibold transition-all duration-200 ease-in-out border-2 border-black rounded-md lg:text-base lg:font-bold lg:px-5 lg:py-2 hover:bg-gray-100"
                 onClick={handlePreviousBtn}
               >
                 Back
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 font-bold text-white duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md hover:bg-teal-700 hover:border-teal-700"
+                className="px-3 py-1 text-sm font-semibold text-white duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md lg:text-base lg:font-bold lg:px-5 lg:py-2 hover:bg-teal-700 hover:border-teal-700"
               >
                 Save and Next
               </button>
@@ -414,7 +414,7 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         ) : (
           <button
             type="submit"
-            className="self-center px-5 py-2 font-bold text-white duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md w-fit hover:bg-teal-700 hover:border-teal-700"
+            className="self-center px-3 py-1 font-bold text-white duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md lg:px-5 lg:py-2 w-fit hover:bg-teal-700 hover:border-teal-700"
           >
             Skip This Section
           </button>

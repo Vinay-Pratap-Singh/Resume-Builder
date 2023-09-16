@@ -27,40 +27,42 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="sticky_navbar w-full px-2 lg:px-16 md:px-5 xl:px-24 h-20 bg-[#385A64] flex items-center justify-between text-white">
+    <nav className="sticky_navbar w-full px-2 lg:px-16 md:px-5 xl:px-24 py-2 lg:py-0 lg:h-20 bg-[#385A64] flex items-center justify-between text-white">
       {/* creating the logo */}
       <Link to="/">
-        <h1 className="text-xl font-semibold">
+        <h1 className="text-lg font-semibold lg:text-xl">
           Wizard <span className="font-bold text-teal-500">CV</span>
         </h1>
       </Link>
 
       {/* adding the nav items */}
-      <ul className="items-center hidden gap-10 font-semibold lg:flex">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <a href="#features" className="active:text-teal-500">
-            Features
-          </a>
-        </li>
-        <li>
-          <a href="#template" className="active:text-teal-500">
-            Template
-          </a>
-        </li>
-        <li>
-          <a href="#faq" className="active:text-teal-500">
-            FAQ
-          </a>
-        </li>
-        <li>
-          <a href="#contact" className="active:text-teal-500">
-            Contact Us
-          </a>
-        </li>
-      </ul>
+      {location.pathname !== "/form" && (
+        <ul className="items-center hidden gap-10 font-semibold lg:flex">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <a href="#features" className="active:text-teal-500">
+              Features
+            </a>
+          </li>
+          <li>
+            <a href="#template" className="active:text-teal-500">
+              Template
+            </a>
+          </li>
+          <li>
+            <a href="#faq" className="active:text-teal-500">
+              FAQ
+            </a>
+          </li>
+          <li>
+            <a href="#contact" className="active:text-teal-500">
+              Contact Us
+            </a>
+          </li>
+        </ul>
+      )}
 
       {/* adding the buttons */}
       <div className="flex items-center gap-5">
