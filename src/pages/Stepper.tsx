@@ -140,7 +140,7 @@ const Stepper = () => {
     <div className="flex flex-col justify-between min-h-screen">
       <Header />
       {/* creating the stepper */}
-      <div className="flex items-center mx-24 mt-10">
+      <div className="flex items-center mx-2 mt-5 lg:mt-10 md:mx-5 lg:mx-24">
         {steps.map((step, stepIndex) => {
           return step.status === "complete" ? (
             <>
@@ -148,10 +148,10 @@ const Stepper = () => {
                 key={nanoid()}
                 className="relative flex items-center text-teal-600"
               >
-                <div className="flex items-center justify-center w-12 h-12 transition duration-500 ease-in-out border-2 border-teal-600 rounded-full">
-                  <div className="w-6 h-6">{step?.icons}</div>
+                <div className="flex items-center justify-center w-8 h-8 transition duration-500 ease-in-out border-2 border-teal-600 rounded-full lg:w-12 lg:h-12">
+                  <div className="w-4 h-4 lg:w-6 lg:h-6">{step?.icons}</div>
                 </div>
-                <div className="absolute top-0 w-32 mt-16 -ml-10 text-xs font-medium text-center text-teal-600 uppercase">
+                <div className="absolute top-0 hidden w-32 mt-16 -ml-10 text-xs font-medium text-center text-teal-600 uppercase lg:block">
                   {step?.name}
                 </div>
               </div>
@@ -163,10 +163,10 @@ const Stepper = () => {
                 key={nanoid()}
                 className="relative flex items-center text-white"
               >
-                <div className="flex items-center justify-center w-12 h-12 transition duration-500 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-full">
-                  <div className="w-6 h-6">{step?.icons}</div>
+                <div className="flex items-center justify-center w-8 h-8 transition duration-500 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-full lg:w-12 lg:h-12">
+                  <div className="w-4 h-4 lg:w-6 lg:h-6">{step?.icons}</div>
                 </div>
-                <div className="absolute top-0 w-32 mt-16 -ml-10 text-xs font-medium text-center text-teal-600 uppercase">
+                <div className="absolute top-0 hidden w-32 mt-16 -ml-10 text-xs font-medium text-center text-teal-600 uppercase lg:block">
                   {step?.name}
                 </div>
               </div>
@@ -180,10 +180,10 @@ const Stepper = () => {
                 key={nanoid()}
                 className="relative flex items-center text-gray-500"
               >
-                <div className="flex items-center justify-center w-12 h-12 transition duration-500 ease-in-out border-2 border-gray-300 rounded-full">
-                  <div className="w-6 h-6">{step?.icons}</div>
+                <div className="flex items-center justify-center w-8 h-8 transition duration-500 ease-in-out border-2 border-gray-300 rounded-full lg:w-12 lg:h-12">
+                  <div className="w-4 h-4 lg:w-6 lg:h-6">{step?.icons}</div>
                 </div>
-                <div className="absolute top-0 w-32 mt-16 -ml-10 text-xs font-medium text-center text-gray-500 uppercase">
+                <div className="absolute top-0 hidden w-32 mt-16 -ml-10 text-xs font-medium text-center text-gray-500 uppercase lg:block">
                   {step.name}
                 </div>
               </div>
@@ -196,7 +196,7 @@ const Stepper = () => {
       </div>
 
       {/* adding the form section */}
-      <section className="self-stretch mt-20">
+      <section className="self-stretch mt-6 lg:mt-20">
         {steps[currentStep]?.component}
       </section>
 

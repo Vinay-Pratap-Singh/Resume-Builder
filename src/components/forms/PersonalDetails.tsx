@@ -122,16 +122,21 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   return (
     <form
       onSubmit={handleSubmit(onFormSubmit)}
-      className="flex flex-col justify-center gap-10"
+      className="flex flex-col justify-center gap-5 lg:gap-10"
     >
-      <div className="flex justify-center gap-10">
+      <div className="flex flex-col flex-wrap justify-center gap-5 px-2 lg:gap-5 lg:flex-row xl:px-24 lg:px-16 md:px-5">
         {/* personal details section */}
-        <div className="p-4 space-y-3 rounded-md shadow-md w-80">
-          <h1 className="text-xl font-bold">Enter Your Basic Details</h1>
+        <div className="w-full p-2 space-y-3 rounded-md shadow-md lg:p-4 lg:flex-1">
+          <h1 className="text-lg font-bold lg:text-xl">
+            Enter Your Basic Details
+          </h1>
 
           {/* for user full name */}
           <section className="w-full">
-            <label htmlFor="fullName" className="font-semibold">
+            <label
+              htmlFor="fullName"
+              className="text-sm font-semibold lg:text-base"
+            >
               Full Name
               <input
                 id="fullName"
@@ -155,13 +160,18 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               />
             </label>
             {errors.fullName && (
-              <p className="text-red-500">{errors.fullName.message}</p>
+              <p className="text-sm text-red-500 lg:text-base">
+                {errors.fullName.message}
+              </p>
             )}
           </section>
 
           {/* for user phone number */}
           <section className="w-full">
-            <label htmlFor="phoneNumber" className="font-semibold">
+            <label
+              htmlFor="phoneNumber"
+              className="text-sm font-semibold lg:text-base"
+            >
               Phone Number
               <input
                 id="phoneNumber"
@@ -193,13 +203,18 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               />
             </label>
             {errors.phoneNumber && (
-              <p className="text-red-500">{errors.phoneNumber.message}</p>
+              <p className="text-sm text-red-500 lg:text-base">
+                {errors.phoneNumber.message}
+              </p>
             )}
           </section>
 
           {/* for user state name */}
           <section className="w-full">
-            <label htmlFor="stateName" className="font-semibold">
+            <label
+              htmlFor="stateName"
+              className="text-sm font-semibold lg:text-base"
+            >
               State Name
               <input
                 id="stateName"
@@ -223,13 +238,18 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               />
             </label>
             {errors.state && (
-              <p className="text-red-500">{errors.state.message}</p>
+              <p className="text-sm text-red-500 lg:text-base">
+                {errors.state.message}
+              </p>
             )}
           </section>
 
           {/* for user city */}
           <section className="w-full">
-            <label htmlFor="cityName" className="font-semibold">
+            <label
+              htmlFor="cityName"
+              className="text-sm font-semibold lg:text-base"
+            >
               City Name
               <input
                 id="cityName"
@@ -253,20 +273,92 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               />
             </label>
             {errors.city && (
-              <p className="text-red-500">{errors.city.message}</p>
+              <p className="text-sm text-red-500 lg:text-base">
+                {errors.city.message}
+              </p>
+            )}
+          </section>
+        </div>
+
+        {/* for user job role details */}
+        <div className="flex flex-col w-full p-2 space-y-3 rounded-md shadow-md lg:p-4 lg:flex-1">
+          {/* for job role  */}
+          <section className="w-full">
+            <label
+              htmlFor="cityName"
+              className="text-sm font-semibold lg:text-base"
+            >
+              Job Role
+              <input
+                id="jobRole"
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
+                  errors.role
+                    ? "focus:outline-red-500"
+                    : "focus:outline-teal-600 "
+                }`}
+                type="text"
+                placeholder="Frontend developer"
+                {...register("role", {
+                  required: {
+                    value: true,
+                    message: "* Please enter your role",
+                  },
+                  minLength: {
+                    value: 3,
+                    message: "* Please enter a valid role type",
+                  },
+                })}
+              />
+            </label>
+            {errors.role && (
+              <p className="text-sm text-red-500 lg:text-base">
+                {errors.role.message}
+              </p>
+            )}
+          </section>
+
+          {/* for role description  */}
+          <section className="self-stretch w-full h-full">
+            <label
+              htmlFor="cityName"
+              className="text-sm font-semibold lg:text-base"
+            >
+              About yourself
+              <textarea
+                id="bio"
+                className={`px-2 py-1 border-2 w-full font-normal mt-1 h-40 lg:h-[90%] resize-none ${
+                  errors.bio
+                    ? "focus:outline-red-500"
+                    : "focus:outline-teal-600 "
+                }`}
+                placeholder="Use chatGPT to generate a bio of yourself"
+                {...register("bio", {
+                  required: {
+                    value: true,
+                    message: "* Please enter about yourself",
+                  },
+                  minLength: {
+                    value: 15,
+                    message: "* Please enter a valid bio",
+                  },
+                })}
+              />
+            </label>
+            {errors.role && (
+              <p className="text-sm text-red-500 lg:text-base">
+                {errors.role.message}
+              </p>
             )}
           </section>
         </div>
 
         {/* for language, hobbies and skills */}
-        <div className="space-y-3 w-[28rem] p-4 shadow-md rounded-md">
+        <div className="space-y-3 w-full xl:w-[28rem] p-2 lg:p-4 shadow-md rounded-md">
           {/* for language */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               {" "}
-              <h1 className="text-xl font-bold">
-                Add your language preferences
-              </h1>
+              <h1 className="text-lg font-bold lg:text-xl">Languages known</h1>
               {/* for adding new language */}
               <button
                 type="button"
@@ -283,7 +375,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-7 h-7"
+                  className="w-6 h-6 lg:w-7 lg:h-7"
                 >
                   <path
                     strokeLinecap="round"
@@ -301,7 +393,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                   <section key={item.id} className="relative w-32">
                     <label
                       htmlFor={`languages.${index}.language`}
-                      className="font-semibold"
+                      className="text-sm font-semibold lg:text-base"
                     >
                       Language {index + 1}
                       <input
@@ -336,7 +428,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                         viewBox="0 0 24 24"
                         strokeWidth="1.5"
                         stroke="currentColor"
-                        className="w-6 h-6"
+                        className="w-5 h-5 lg:w-6 lg:h-6"
                       >
                         <path
                           strokeLinecap="round"
@@ -351,13 +443,19 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             </div>
 
             {/* for displaying the errors */}
-            {languageError && <p className="text-red-500">{languageError}</p>}
+            {languageError && (
+              <p className="text-sm text-red-500 lg:text-base">
+                {languageError}
+              </p>
+            )}
           </div>
 
           {/* for user hobbies */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <h1 className="text-xl font-bold">Add your interest areas</h1>
+              <h1 className="text-lg font-bold lg:text-xl">
+                Your interest area
+              </h1>
 
               {/* for adding new hobby */}
               <button
@@ -375,7 +473,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-7 h-7"
+                  className="w-6 h-6 lg:w-7 lg:h-7"
                 >
                   <path
                     strokeLinecap="round"
@@ -393,7 +491,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                   <section key={item.id} className="relative w-32">
                     <label
                       htmlFor={`interests.${index}.hobby`}
-                      className="font-semibold"
+                      className="text-sm font-semibold lg:text-base"
                     >
                       Hobby {index + 1}
                       <input
@@ -428,7 +526,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                         viewBox="0 0 24 24"
                         strokeWidth="1.5"
                         stroke="currentColor"
-                        className="w-6 h-6"
+                        className="w-5 h-5 lg:w-6 lg:h-6"
                       >
                         <path
                           strokeLinecap="round"
@@ -443,13 +541,17 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             </div>
 
             {/* for displaying the errors */}
-            {interestError && <p className="text-red-500">{interestError}</p>}
+            {interestError && (
+              <p className="text-sm text-red-500 lg:text-base">
+                {interestError}
+              </p>
+            )}
           </div>
 
           {/* for user skills */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <h1 className="text-xl font-bold">Add your skills</h1>
+              <h1 className="text-lg font-bold lg:text-xl">Add your skills</h1>
 
               {/* for adding new skills */}
               <button
@@ -467,7 +569,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
                   stroke="currentColor"
-                  className="w-7 h-7"
+                  className="w-6 h-6 lg:w-7 lg:h-7"
                 >
                   <path
                     strokeLinecap="round"
@@ -485,7 +587,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                   <section key={item.id} className="relative w-32">
                     <label
                       htmlFor={`skills.${index}.name`}
-                      className="font-semibold"
+                      className="text-sm font-semibold lg:text-base"
                     >
                       Skill {index + 1}
                       <input
@@ -520,7 +622,7 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                         viewBox="0 0 24 24"
                         strokeWidth="1.5"
                         stroke="currentColor"
-                        className="w-6 h-6"
+                        className="w-5 h-5 lg:w-6 lg:h-6"
                       >
                         <path
                           strokeLinecap="round"
@@ -535,70 +637,10 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             </div>
 
             {/* for displaying the errors */}
-            {skillsError && <p className="text-red-500">{skillsError}</p>}
+            {skillsError && (
+              <p className="text-sm text-red-500 lg:text-base">{skillsError}</p>
+            )}
           </div>
-        </div>
-
-        {/* for user role details */}
-        <div className="p-4 space-y-3 rounded-md shadow-md w-80">
-          {/* for job role  */}
-          <section className="w-full">
-            <label htmlFor="cityName" className="font-semibold">
-              Job Role
-              <input
-                id="jobRole"
-                className={`px-2 py-1 border-2 w-full font-normal mt-1 ${
-                  errors.role
-                    ? "focus:outline-red-500"
-                    : "focus:outline-teal-600 "
-                }`}
-                type="text"
-                placeholder="Frontend developer"
-                {...register("role", {
-                  required: {
-                    value: true,
-                    message: "* Please enter your role",
-                  },
-                  minLength: {
-                    value: 3,
-                    message: "* Please enter a valid role type",
-                  },
-                })}
-              />
-            </label>
-            {errors.role && (
-              <p className="text-red-500">{errors.role.message}</p>
-            )}
-          </section>
-
-          {/* for role description  */}
-          <section className="w-full h-full">
-            <label htmlFor="cityName" className="font-semibold">
-              About yourself
-              <textarea
-                id="bio"
-                className={`px-2 py-1 border-2 w-full font-normal mt-1 h-48 resize-none ${
-                  errors.bio
-                    ? "focus:outline-red-500"
-                    : "focus:outline-teal-600 "
-                }`}
-                placeholder="Use chatGPT to generate a bio of yourself"
-                {...register("bio", {
-                  required: {
-                    value: true,
-                    message: "* Please enter about yourself",
-                  },
-                  minLength: {
-                    value: 15,
-                    message: "* Please enter a valid bio",
-                  },
-                })}
-              />
-            </label>
-            {errors.role && (
-              <p className="text-red-500">{errors.role.message}</p>
-            )}
-          </section>
         </div>
       </div>
 
@@ -606,14 +648,14 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         {/* button to submit the form */}
         <button
           type="button"
-          className="px-5 py-2 font-bold transition-all duration-200 ease-in-out border-2 border-black rounded-md hover:bg-gray-100"
+          className="px-3 py-1 font-bold transition-all duration-200 ease-in-out border-2 border-black rounded-md lg:px-5 lg:py-2 hover:bg-gray-100"
           onClick={handlePreviousBtn}
         >
           Back
         </button>
         <button
           type="submit"
-          className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md hover:bg-teal-700 hover:border-teal-700"
+          className="px-3 py-1 font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md lg:px-5 lg:py-2 hover:bg-teal-700 hover:border-teal-700"
         >
           Save and Next
         </button>
