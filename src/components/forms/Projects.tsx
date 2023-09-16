@@ -79,16 +79,15 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   return (
     <form
       onSubmit={handleSubmit(onFormSubmit)}
-      className="flex flex-col justify-center gap-10 m-auto w-fit"
+      className="flex flex-col justify-center gap-5 m-auto lg:gap-10 w-fit"
     >
       {/* container for project */}
-
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-5 lg:gap-10">
         {/* button for adding new project */}
         <div className="self-center">
           <button
             type="button"
-            className="px-5 py-2 font-bold text-white bg-teal-600 border-2 border-teal-600 rounded-md"
+            className="px-3 py-1 text-sm font-semibold text-white bg-teal-600 border-2 border-teal-600 rounded-md lg:px-5 lg:py-2 lg:font-bold lg:text-base"
             onClick={() =>
               append({
                 projectName: "",
@@ -102,13 +101,15 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         </div>
 
         {/* mapping the projects data to display */}
-        <div className="flex flex-wrap items-center justify-center gap-5">
+        <div className="flex flex-wrap items-center justify-center gap-5 px-2 md:px-0">
           {fields.map((project: any, projectIndex) => (
             <div
               key={project.id}
-              className="flex flex-col self-start p-4 space-y-3 rounded-md shadow-md w-96"
+              className="flex flex-col self-start w-full p-2 space-y-3 rounded-md shadow-md lg:p-4 md:w-96"
             >
-              <h1 className="text-xl font-bold">Project {projectIndex + 1}</h1>
+              <h1 className="text-lg font-bold lg:text-xl">
+                Project {projectIndex + 1}
+              </h1>
               {/* for project name */}
               <Controller
                 name={`projects.${projectIndex}.projectName`}
@@ -127,7 +128,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                 render={({ field }: any) => (
                   <label
                     htmlFor={`projects.${projectIndex}.projectName`}
-                    className="font-semibold"
+                    className="text-sm font-semibold lg:text-base"
                   >
                     Project Name
                     <input
@@ -163,7 +164,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                 }}
                 render={({ field }: any) => (
                   <label
-                    className="font-semibold"
+                    className="text-sm font-semibold lg:text-base"
                     htmlFor={`projects.${projectIndex}.projectDescription`}
                   >
                     Project Description
@@ -187,7 +188,9 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
               <div className="flex flex-col gap-0">
                 {/* for title and add button */}
                 <div className="flex items-center justify-between">
-                  <h4 className="font-semibold">Technologies Used</h4>
+                  <h4 className="text-sm font-semibold lg:text-base">
+                    Technologies Used
+                  </h4>
                   {/* button to add tech */}
                   <button
                     type="button"
@@ -200,7 +203,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
                       stroke="currentColor"
-                      className="w-7 h-7"
+                      className="w-6 h-6 lg:w-7 lg:h-7"
                     >
                       <path
                         strokeLinecap="round"
@@ -224,7 +227,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                             render={({ field }: any) => (
                               <div className="flex items-center w-fit">
                                 <label
-                                  className="font-semibold"
+                                  className="text-sm font-semibold lg:text-base"
                                   htmlFor={`projects.${projectIndex}.projectTechnology.${techIndex}`}
                                 >
                                   <div className="flex items-center">
@@ -266,7 +269,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                                         viewBox="0 0 24 24"
                                         strokeWidth="1.5"
                                         stroke="currentColor"
-                                        className="w-6 h-6"
+                                        className="w-5 h-5 lg:w-6 lg:h-6"
                                       >
                                         <path
                                           strokeLinecap="round"
@@ -288,7 +291,7 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
               {/* button to remove project */}
               <button
-                className="flex items-center justify-center gap-2 px-3 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-red-500 rounded-md hover:bg-red-600"
+                className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-semibold text-white transition-all duration-200 ease-in-out bg-red-500 rounded-md lg:font-bold lg:text-base hover:bg-red-600"
                 type="button"
                 onClick={() => remove(projectIndex)}
               >
@@ -316,14 +319,14 @@ const Projects: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
         <footer className="m-auto space-x-5 w-fit">
           <button
             type="button"
-            className="px-5 py-2 font-bold transition-all duration-200 ease-in-out bg-gray-100 border-2 border-black rounded-md"
+            className="px-3 py-1 text-sm font-semibold transition-all duration-200 ease-in-out bg-gray-100 border-2 border-black rounded-md lg:font-bold lg:text-base lg:px-5 lg:py-2"
             onClick={handlePreviousBtn}
           >
             Back
           </button>
           <button
             type="submit"
-            className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md hover:bg-teal-700 hover:border-teal-700"
+            className="px-3 py-1 text-sm font-semibold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md lg:font-bold lg:text-base lg:px-5 lg:py-2 hover:bg-teal-700 hover:border-teal-700"
           >
             Save and Next
           </button>

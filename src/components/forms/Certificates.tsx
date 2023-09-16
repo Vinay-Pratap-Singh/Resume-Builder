@@ -49,11 +49,11 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
   return (
     <form
       onSubmit={handleSubmit(onFormSubmit)}
-      className="flex flex-col justify-center w-full gap-10 m-auto"
+      className="flex flex-col justify-center w-full gap-5 m-auto lg:gap-10"
     >
       <div className="flex flex-col space-y-3">
         {/* for checking user has certificate or not */}
-        <section className="flex items-center justify-center w-full gap-2 text-lg font-semibold">
+        <section className="flex items-center justify-center w-full gap-2 text-base font-semibold lg:text-lg">
           <label htmlFor="hasCertificate" className="font-bold">
             <input
               id="hasCertificate"
@@ -68,33 +68,31 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
 
         {hasCertificate ? (
           <div className="flex flex-col items-center gap-5">
-            <div>
-              <button
-                type="button"
-                className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md hover:border-teal-700 hover:bg-teal-700"
-                onClick={() =>
-                  append({ certificateName: "", certificateLink: "" })
-                }
-              >
-                Add Certificate
-              </button>
-            </div>
+            <button
+              type="button"
+              className="px-3 py-1 text-sm font-semibold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md lg:font-bold lg:text-base lg:px-5 lg:py-2 hover:bg-teal-700 hover:border-teal-700"
+              onClick={() =>
+                append({ certificateName: "", certificateLink: "" })
+              }
+            >
+              Add Certificate
+            </button>
 
             {/* if user has certificate */}
-            <div className="flex flex-wrap items-center justify-center gap-5">
+            <div className="flex flex-wrap items-center justify-center gap-5 px-2 lg:px-0">
               {fields.map((item, index) => {
                 return (
                   <div
                     key={item.id}
-                    className="flex flex-col p-4 space-y-3 rounded-md shadow-md w-80"
+                    className="relative flex flex-col justify-between w-full p-2 space-y-3 rounded-md shadow-md lg:p-4 md:w-96"
                   >
-                    <h1 className="text-xl font-bold">
+                    <h1 className="text-lg font-bold lg:text-xl">
                       Certificate {index + 1}
                     </h1>
                     <section className="w-full">
                       <label
                         htmlFor={`certificates.${index}.certificateName`}
-                        className="font-semibold"
+                        className="text-sm font-semibold lg:text-base"
                       >
                         Certificate Name
                         <input
@@ -118,7 +116,7 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                     <section className="w-full">
                       <label
                         htmlFor={`certificates.${index}.certificateLink`}
-                        className="font-semibold"
+                        className="text-sm font-semibold lg:text-base"
                       >
                         Certificate Link
                         <input
@@ -137,7 +135,7 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                     </section>
 
                     <button
-                      className="flex items-center justify-center gap-2 px-3 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-red-500 rounded-md hover:bg-red-600"
+                      className="flex items-center justify-center gap-2 px-3 py-2 text-sm font-semibold text-white transition-all duration-200 ease-in-out bg-red-500 rounded-md lg:text-base lg:font-bold hover:bg-red-600"
                       type="button"
                       onClick={() => remove(index)}
                     >
@@ -166,14 +164,14 @@ const Certificates: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             <footer className="m-auto space-x-5 w-fit">
               <button
                 type="button"
-                className="px-5 py-2 font-bold transition-all duration-200 ease-in-out border-2 border-black rounded-md hover:bg-gray-100"
+                className="px-3 py-1 text-sm font-semibold transition-all duration-200 ease-in-out border-2 border-black rounded-md lg:px-5 lg:py-2 lg:font-bold lg:text-base hover:bg-gray-100"
                 onClick={handlePreviousBtn}
               >
                 Back
               </button>
               <button
                 type="submit"
-                className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md hover:border-teal-700 hover:bg-teal-700"
+                className="px-3 py-1 text-sm font-semibold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md lg:px-5 lg:py-2 lg:font-bold lg:text-base hover:border-teal-700 hover:bg-teal-700"
               >
                 Save and Next
               </button>

@@ -82,7 +82,7 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
       className="flex flex-col justify-center w-full gap-5 m-auto lg:gap-10"
     >
       <div className="flex flex-col space-y-3">
-        {/* for checking user has certificate or not */}
+        {/* for checking user has experience or not */}
         <section className="flex items-center justify-center w-full gap-2 text-base font-semibold lg:text-lg">
           <label htmlFor="hasExperience" className="font-bold">
             <input
@@ -116,11 +116,11 @@ const WorkExperience: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
             </button>
 
             {/* if user has experience */}
-            <div className="flex flex-wrap items-stretch self-stretch justify-center gap-5 px-2">
+            <div className="flex flex-wrap items-stretch self-stretch justify-center gap-5 px-2 lg:px-0">
               {fields.map((works: any, worksIndex) => (
                 <div
                   key={works.id}
-                  className="relative flex flex-col justify-between w-full p-2 space-y-3 rounded-md shadow-md lg:p-4 lg:w-96"
+                  className="relative flex flex-col justify-between w-full p-2 space-y-3 rounded-md shadow-md lg:p-4 md:w-96"
                 >
                   {/* for work experience details */}
                   <div className="flex flex-col gap-3">
