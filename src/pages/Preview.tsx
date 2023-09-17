@@ -53,6 +53,20 @@ const Preview = () => {
     }
   }, [navigate, data]);
 
+  // for handling preview and download in small screen sizes
+  useEffect(() => {
+    if (window.innerWidth < 760) {
+      const viewportTag = document.createElement("meta");
+      viewportTag.name = "viewport";
+      viewportTag.content = "width=device-width, initial-scale=0.5";
+      document.head.appendChild(viewportTag);
+      return () => {
+        document.head.removeChild(viewportTag);
+      };
+    }
+    return undefined;
+  }, []);
+
   return (
     <div>
       {/* adding the header */}
@@ -68,13 +82,13 @@ const Preview = () => {
       <div className="flex items-center justify-center gap-5">
         <button
           type="submit"
-          className="px-5 py-2 font-bold transition-all duration-200 ease-in-out border-2 border-black rounded-md hover:bg-gray-100"
+          className="px-3 py-1 text-sm font-semibold transition-all duration-200 ease-in-out border-2 border-black rounded-md lg:px-5 lg:py-2 lg:font-bold lg:text-base hover:bg-gray-100"
         >
           <Link to="/form">Edit data</Link>
         </button>
         <button
           type="submit"
-          className="px-5 py-2 font-bold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md hover:bg-teal-700 hover:border-teal-700"
+          className="px-3 py-1 text-sm font-semibold text-white transition-all duration-200 ease-in-out bg-teal-600 border-2 border-teal-600 rounded-md lg:px-5 lg:py-2 lg:font-bold lg:text-base hover:bg-teal-700 hover:border-teal-700"
         >
           {pdfData ? (
             <a
