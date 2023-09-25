@@ -344,9 +344,9 @@ const PersonalDetails: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
                 })}
               />
             </label>
-            {errors.role && (
+            {errors.bio && (
               <p className="text-sm text-red-500 lg:text-base">
-                {errors.role.message}
+                {errors.bio.message}
               </p>
             )}
           </section>

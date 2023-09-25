@@ -1,7 +1,4 @@
-/* eslint-disable prefer-regex-literals */
-/* eslint-disable no-underscore-dangle */
 /// <reference lib="webworker" />
-/* eslint-disable no-restricted-globals */
 
 // This service worker can be customized!
 // See https://developers.google.com/web/tools/workbox/modules

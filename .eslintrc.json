@@ -9,7 +9,6 @@
     "plugin:@typescript-eslint/recommended",
     "airbnb",
     "airbnb/hooks",
-    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended"
@@ -72,7 +71,8 @@
     ],
     "react/jsx-props-no-spreading": "off",
     "no-nested-ternary": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "warn"
   },
   "ignorePatterns": ["commitlint.config.js", "tailwind.config.js"]
 }
