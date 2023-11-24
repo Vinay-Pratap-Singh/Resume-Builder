@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
+import { useEffect, useState } from "react";
 import {
   Icertificate,
   IpreviewData,
@@ -12,8 +13,26 @@ interface Iprops {
 }
 
 const Template1 = ({ data }: Iprops) => {
+  const [templateColor, setTemplateColor] = useState("gray");
+
+  // getting the template color from local storage
+  useEffect(() => {
+    const color = localStorage.getItem("templateColor");
+    if (color) {
+      setTemplateColor(color);
+    }
+  }, []);
+
   return (
-    <div className="m-5 border-2 border-gray-700 rounded-md">
+    <div
+      className={`m-5 border-2 rounded-md ${
+        templateColor === "gray"
+          ? "border-gray-700"
+          : templateColor === "teal"
+          ? "border-teal-700"
+          : "border-cyan-700"
+      }`}
+    >
       {/* creating the resume header */}
       <header className="p-5">
         <h1 className="text-3xl font-bold">
@@ -26,7 +45,15 @@ const Template1 = ({ data }: Iprops) => {
       </header>
 
       {/* for social links */}
-      <section className="grid grid-cols-2 p-5 text-white bg-gray-700 gap-y-2 gap-x-5">
+      <section
+        className={`grid grid-cols-2 p-5 text-white ${
+          templateColor === "gray"
+            ? "bg-gray-700"
+            : templateColor === "teal"
+            ? "bg-teal-700"
+            : "bg-cyan-700"
+        } gap-y-2 gap-x-5`}
+      >
         {/* for email */}
         <div>
           <Link
@@ -206,7 +233,13 @@ const Template1 = ({ data }: Iprops) => {
                           return (
                             <li
                               key={nanoid()}
-                              className="flex items-center justify-center px-3 py-1 text-sm text-white bg-gray-500 rounded-md"
+                              className={`flex items-center justify-center px-3 py-1 text-sm text-white bg-gray-500 rounded-md ${
+                                templateColor === "gray"
+                                  ? "bg-gray-700"
+                                  : templateColor === "teal"
+                                  ? "bg-teal-700"
+                                  : "bg-cyan-700"
+                              } `}
                             >
                               {tech}
                             </li>
@@ -231,7 +264,13 @@ const Template1 = ({ data }: Iprops) => {
                 return (
                   <li
                     key={nanoid()}
-                    className="px-3 py-1 text-sm text-white bg-gray-500 rounded-md "
+                    className={`px-3 py-1 text-sm text-white bg-gray-500 rounded-md ${
+                      templateColor === "gray"
+                        ? "bg-gray-700"
+                        : templateColor === "teal"
+                        ? "bg-teal-700"
+                        : "bg-cyan-700"
+                    } `}
                   >
                     {skill?.name}
                   </li>
@@ -272,7 +311,13 @@ const Template1 = ({ data }: Iprops) => {
                 return (
                   <li
                     key={nanoid()}
-                    className="px-3 py-1 text-sm text-white bg-gray-500 rounded-md"
+                    className={`px-3 py-1 text-sm text-white rounded-md ${
+                      templateColor === "gray"
+                        ? "bg-gray-700"
+                        : templateColor === "teal"
+                        ? "bg-teal-700"
+                        : "bg-cyan-700"
+                    } `}
                   >
                     {lang.language}
                   </li>
@@ -292,7 +337,13 @@ const Template1 = ({ data }: Iprops) => {
                 return (
                   <li
                     key={nanoid()}
-                    className="px-3 py-1 text-sm text-white bg-gray-500 rounded-md"
+                    className={`px-3 py-1 text-sm text-white rounded-md ${
+                      templateColor === "gray"
+                        ? "bg-gray-700"
+                        : templateColor === "teal"
+                        ? "bg-teal-700"
+                        : "bg-cyan-700"
+                    } `}
                   >
                     {interest?.hobby}
                   </li>

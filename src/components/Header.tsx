@@ -36,7 +36,7 @@ const Header = () => {
       </Link>
 
       {/* adding the nav items */}
-      {location.pathname !== "/form" && (
+      {location.pathname === "/" && (
         <ul className="items-center hidden gap-10 font-semibold lg:flex">
           <li>
             <Link to="/">Home</Link>

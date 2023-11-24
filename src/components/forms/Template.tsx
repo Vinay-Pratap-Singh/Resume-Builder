@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { FC, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import template1 from "../../assets/templates/template1.png";
 
 interface Iprops {
   currentStep: number;
@@ -7,6 +8,7 @@ interface Iprops {
 }
 
 const Template: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
+  const [selectedTemplate, setSelectedTemplate] = useState(0);
   // function to handle the previous button
   const handlePreviousBtn = () => {
     if (currentStep === 0) {
@@ -15,18 +17,80 @@ const Template: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
     setCurrentStep(currentStep - 1);
   };
 
+  // function to set template color
+  const handleTemplateColor = (index: number) => {
+    setSelectedTemplate(index);
+    if (index === 0) {
+      localStorage.setItem("templateColor", "gray");
+    } else if (index === 1) {
+      localStorage.setItem("templateColor", "teal");
+    } else if (index === 2) {
+      localStorage.setItem("templateColor", "cyan");
+    }
+  };
+
+  // for setting the default template color
+  useEffect(() => {
+    localStorage.setItem("templateColor", "gray");
+  }, []);
+
   return (
     <div className="m-auto space-y-10 text-center">
       <h1 className="text-2xl font-bold">Choose any template</h1>
       <header className="flex flex-wrap items-center justify-center gap-10">
-        <div className="flex items-center justify-center font-semibold shadow-md h-80 w-72">
-          Template 1
+        {/* for template 1 */}
+        <div
+          onClick={() => handleTemplateColor(0)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleTemplateColor(0);
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          className={`flex items-center justify-center p-2 font-semibold cursor-pointer border-[1px] border-gray-300 ${
+            selectedTemplate === 0 ? "shadow-md border-none" : "shadow-none"
+          }`}
+        >
+          <img className="w-72 h-90" src={template1} alt="template1" />
         </div>
-        <div className="flex items-center justify-center font-semibold shadow-md h-80 w-72">
-          Template 2
+
+        {/* for template 2 */}
+        <div
+          onClick={() => handleTemplateColor(1)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleTemplateColor(1);
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          className={`flex items-center justify-center p-2 font-semibold cursor-pointer border-[1px] border-gray-300 ${
+            selectedTemplate === 1
+              ? "shadow-md border-none scale-[1.02]"
+              : "shadow-none"
+          }`}
+        >
+          <img className="w-72 h-90" src={template1} alt="template1" />
         </div>
-        <div className="flex items-center justify-center font-semibold shadow-md h-80 w-72">
-          Template 3
+
+        {/* for template 3 */}
+        <div
+          onClick={() => handleTemplateColor(2)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleTemplateColor(2);
+            }
+          }}
+          role="button"
+          tabIndex={0}
+          className={`flex items-center justify-center p-2 font-semibold cursor-pointer border-[1px] border-gray-300 ${
+            selectedTemplate === 2
+              ? "shadow-md border-none scale-[1.02]"
+              : "shadow-none"
+          }`}
+        >
+          <img className="w-72 h-90" src={template1} alt="template1" />
         </div>
       </header>
 
