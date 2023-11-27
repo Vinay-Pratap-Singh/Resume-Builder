@@ -48,11 +48,14 @@ const Template: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
           }}
           role="button"
           tabIndex={0}
-          className={`flex items-center justify-center p-2 font-semibold cursor-pointer border-[1px] border-gray-300 ${
+          className={`flex flex-col items-center justify-center p-2 font-semibold cursor-pointer border-[1px] border-gray-300 ${
             selectedTemplate === 0 ? "shadow-md border-none" : "shadow-none"
           }`}
         >
           <img className="w-72 h-90" src={template1} alt="template1" />
+          <h2 className="w-full py-2 text-white bg-gray-500">
+            Template Color: Gray
+          </h2>
         </div>
 
         {/* for template 2 */}
@@ -65,13 +68,16 @@ const Template: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
           }}
           role="button"
           tabIndex={0}
-          className={`flex items-center justify-center p-2 font-semibold cursor-pointer border-[1px] border-gray-300 ${
+          className={`flex flex-col items-center justify-center p-2 font-semibold cursor-pointer border-[1px] border-gray-300 ${
             selectedTemplate === 1
               ? "shadow-md border-none scale-[1.02]"
               : "shadow-none"
           }`}
         >
           <img className="w-72 h-90" src={template1} alt="template1" />
+          <h2 className="w-full py-2 text-white bg-teal-500">
+            Template Color: Teal
+          </h2>
         </div>
 
         {/* for template 3 */}
@@ -84,13 +90,16 @@ const Template: FC<Iprops> = ({ currentStep, setCurrentStep }) => {
           }}
           role="button"
           tabIndex={0}
-          className={`flex items-center justify-center p-2 font-semibold cursor-pointer border-[1px] border-gray-300 ${
+          className={`flex flex-col items-center justify-center p-2 font-semibold cursor-pointer border-[1px] border-gray-300 ${
             selectedTemplate === 2
               ? "shadow-md border-none scale-[1.02]"
               : "shadow-none"
           }`}
         >
           <img className="w-72 h-90" src={template1} alt="template1" />
+          <h2 className="w-full py-2 text-white bg-cyan-500">
+            Template Color: Cyan
+          </h2>
         </div>
       </header>
 

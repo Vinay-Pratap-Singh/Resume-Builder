@@ -189,21 +189,29 @@ const App = () => {
       >
         <h1 className="text-2xl font-bold text-center">Sample Templates</h1>
         <div className="flex flex-wrap items-center justify-center gap-5 lg:gap-10">
-          <img
-            className="h-80 w-64 border-[1px] border-gray-300 rounded-md hover:border-none hover:shadow-md hover:-translate-y-2 transition-all ease-in-out duration-300"
-            src={template1}
-            alt="template"
-          />
-          <img
-            className="h-80 w-64 border-[1px] border-gray-300 rounded-md hover:border-none hover:shadow-md hover:-translate-y-2 transition-all ease-in-out duration-300"
-            src={template1}
-            alt="template"
-          />
-          <img
-            className="h-80 w-64 border-[1px] border-gray-300 rounded-md hover:border-none hover:shadow-md hover:-translate-y-2 transition-all ease-in-out duration-300"
-            src={template1}
-            alt="template"
-          />
+          {/* template 1 */}
+          <div className="flex flex-col border-[1px] border-gray-300 rounded-md hover:border-none hover:shadow-md hover:-translate-y-2 transition-all ease-in-out duration-300">
+            <img className="w-64 h-80" src={template1} alt="template" />
+            <h2 className="w-full py-1 text-center text-white bg-gray-500 text-md rounded-b-md">
+              Template Color: Gray
+            </h2>
+          </div>
+
+          {/* template 2 */}
+          <div className="flex flex-col border-[1px] border-gray-300 rounded-md hover:border-none hover:shadow-md hover:-translate-y-2 transition-all ease-in-out duration-300">
+            <img className="w-64 h-80 " src={template1} alt="template" />
+            <h2 className="w-full py-1 text-center text-white bg-teal-500 text-md rounded-b-md">
+              Template Color: Teal
+            </h2>
+          </div>
+
+          {/* template 3 */}
+          <div className="flex flex-col border-[1px] border-gray-300 rounded-md hover:border-none hover:shadow-md hover:-translate-y-2 transition-all ease-in-out duration-300">
+            <img className="w-64 h-80 " src={template1} alt="template" />
+            <h2 className="w-full py-1 text-center text-white bg-cyan-500 text-md rounded-b-md">
+              Template Color: Cyan
+            </h2>
+          </div>
         </div>
       </section>
 
